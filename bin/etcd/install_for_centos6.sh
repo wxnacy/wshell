@@ -26,7 +26,7 @@ EOF
 
 test -d /var/lib/etcd || sudo mkdir /var/lib/etcd
 
-sudo curl  https://raw.githubusercontent.com/wxnacy/wxnacy.github.io/master/shells/linux/etcd.initd -o /etc/init.d/etcd
+sudo curl https://raw.githubusercontent.com/wxnacy/wshell/master/bin/etcd/etcd.initd -o /etc/init.d/etcd
 sudo chmod +x /etc/init.d/etcd
 
 sudo chkconfig --add etcd
