@@ -2,4 +2,4 @@
 
 MSG=$1
 
-git add . && git commit -m "${MSG}" && git push
+git pull && git add . && git commit -m "${MSG}" && git push origin master
