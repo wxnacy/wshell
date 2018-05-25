@@ -19,9 +19,11 @@ install(){
         fi
     fi
 
-    if [ $SYS == 'centos' && $VER == '7']
+    if [ $SYS == 'centos' ]
     then
-        install_centos7
+        if [ $VER == '7' ];then
+            install_centos7
+        fi
     fi
 }
 
