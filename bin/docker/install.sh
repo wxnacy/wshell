@@ -16,8 +16,7 @@ install(){
         then
             install_ubuntu1604
         fi
-    elif [[ ${SYS} == 'centos' && ${VER} == '7']]
-    then
+    elif [[ ${SYS} == 'centos' && ${VER} == '7']];then
         install_centos7
     elif [ ${SYS} == 'mac' ]
     then
