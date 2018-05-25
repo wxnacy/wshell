@@ -34,7 +34,7 @@ install(){
 }
 
 install_amzn2(){
-    sudo yum remove docker docker-ce \
+    sudo yum remove -y docker docker-ce \
                   docker-client \
                   docker-client-latest \
                   docker-common \
@@ -55,7 +55,7 @@ install_amzn2(){
 }
 
 install_centos7(){
-    sudo yum remove docker \
+    sudo yum remove -y docker docker-ce \
                   docker-client \
                   docker-client-latest \
                   docker-common \
