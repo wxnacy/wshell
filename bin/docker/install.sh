@@ -25,12 +25,49 @@ install(){
             install_centos7
         fi
     fi
+
+    if [ $SYS == 'amzn' ];then
+        if [ $VER == '2' ];then
+            install_amzn2
+        fi
+    fi
 }
 
-
-install_centos7(){
+install_amzn2(){
+    sudo yum remove docker docker-ce \
+                  docker-client \
+                  docker-client-latest \
+                  docker-common \
+                  docker-latest \
+                  docker-latest-logrotate \
+                  docker-logrotate \
+                  docker-selinux \
+                  docker-engine-selinux \
+                  docker-engine
     sudo yum install -y yum-utils device-mapper-persistent-data lvm2
     sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+
+    sudo yum install -y --setopt=obsoletes=0 \
+        docker-ce-17.03.1.ce-1.el7.centos \
+        docker-ce-selinux-17.03.1.ce-1.el7.centos
+    sudo systemctl start docker
+    sudo systemctl enable docker
+}
+
+install_centos7(){
+    sudo yum remove docker \
+                  docker-client \
+                  docker-client-latest \
+                  docker-common \
+                  docker-latest \
+                  docker-latest-logrotate \
+                  docker-logrotate \
+                  docker-selinux \
+                  docker-engine-selinux \
+                  docker-engine
+    sudo yum install -y yum-utils device-mapper-persistent-data lvm2
+    sudo yum-config-manager --add-repo \ 
+        https://download.docker.com/linux/centos/docker-ce.repo
     sudo yum install -y docker-ce
     sudo systemctl start docker
     sudo systemctl enable docker
