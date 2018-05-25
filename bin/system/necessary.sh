@@ -21,6 +21,7 @@ install(){
         sudo ${PKG} -y install patch zlib1g.dev libgdbm-dev \
             libssl-dev libsqlite3-dev libbz2-dev libreadline-dev
         sudo ${PKG} -y install dnsutils     # dig
+        sudo ${PKG} -y install ack-grep     # ack
     elif [ ${SYS} == 'centos' ]
     then
         sudo ${PKG} -y install gcc-c++ aclocal
@@ -31,6 +32,10 @@ install(){
 
         sudo ${PKG} -y install readline readline-devel readline-static \
             openssl-static sqlite-devel bzip2-devel bzip2-libs
+        # https://beyondgrep.com/install/
+        # sudo /bin/bash -c "curl https://beyondgrep.com/ack-2.22-single-file > /bin/ack && chmod 0755 /bin/ack"
+        sudo ${PKG} -y install ack
+        sudo ${PKG} -y install htop
     elif [ ${SYS} == 'mac' ]
     then
         echo ${SYS}
