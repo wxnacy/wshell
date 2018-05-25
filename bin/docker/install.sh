@@ -7,6 +7,7 @@ VER=${OSS[1]}
 
 
 install(){
+
     if [ ${SYS} == 'ubuntu' ]
     then
         if [ ${VER} == '14.04' ]
@@ -16,12 +17,11 @@ install(){
         then
             install_ubuntu1604
         fi
-    elif [[ ${SYS} == 'centos' && ${VER} == '7']];then
-        install_centos7
-    elif [ ${SYS} == 'mac' ]
-    then
-        echo ${SYS}
+    fi
 
+    if [ $SYS == 'centos' && $VER == '7']
+    then
+        install_centos7
     fi
 }
 
