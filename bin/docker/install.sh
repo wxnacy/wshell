@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
+# desc: 自动安装 docker
+# 支持：centos7 amzn2 ubuntu16.04 ubuntu14.04
+# ubuntu 还不支持自启动
 
 OS=`curl -L https://raw.githubusercontent.com/wxnacy/wshell/master/bin/system/check_system.sh | bash`
 OSS=(${OS})
@@ -66,8 +69,7 @@ install_centos7(){
                   docker-engine-selinux \
                   docker-engine
     sudo yum install -y yum-utils device-mapper-persistent-data lvm2
-    sudo yum-config-manager --add-repo \ 
-        https://download.docker.com/linux/centos/docker-ce.repo
+    sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
     sudo yum install -y docker-ce
     sudo systemctl start docker
     sudo systemctl enable docker
