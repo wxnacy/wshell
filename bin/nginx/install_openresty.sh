@@ -9,7 +9,9 @@ VER=${OSS[1]}
 install(){
     if [ ${SYS} == 'ubuntu' ]
     then
-
+        sudo apt-get -y update
+        sudo apt -y install patch zlib1g.dev libgdbm-dev \
+            libssl-dev libsqlite3-dev libbz2-dev libreadline-dev
         wget -qO - https://openresty.org/package/pubkey.gpg | sudo apt-key add -
         sudo apt-get -y install software-properties-common
         sudo add-apt-repository -y "deb http://openresty.org/package/ubuntu $(lsb_release -sc) main"
