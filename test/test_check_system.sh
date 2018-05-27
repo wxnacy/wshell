@@ -23,18 +23,9 @@ echo ${arr[2]}
 # echo $SYS
 # echo $VER
 
-if [ 6 == '6' ];then
+echo $PATH
+if [[ ! $PATH =~ '/usr/local/phantomjs/bin' ]];then
     echo 'yes'
 else
     echo 'no'
-fi
-strA="long string"
-strB="string"
-result=$(echo $strA | grep "${strB}")
-echo $result
-if [[ "$result" != "" ]]
-then
-    echo "包含"
-else
-    echo "不包含"
 fi

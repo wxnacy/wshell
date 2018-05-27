@@ -18,7 +18,7 @@ install(){
     then
         sudo ${PKG} -y install htop python-pip
         sudo pip install httpie
-        sudo ${PKG} -y install patch zlib1g.dev libgdbm-dev \
+        sudo apt -y install patch zlib1g.dev libgdbm-dev \
             libssl-dev libsqlite3-dev libbz2-dev libreadline-dev
         sudo ${PKG} -y install dnsutils     # dig
         sudo ${PKG} -y install ack-grep     # ack
@@ -33,9 +33,17 @@ install(){
         sudo ${PKG} -y install readline readline-devel readline-static \
             openssl-static sqlite-devel bzip2-devel bzip2-libs
         # https://beyondgrep.com/install/
-        # sudo /bin/bash -c "curl https://beyondgrep.com/ack-2.22-single-file > /bin/ack && chmod 0755 /bin/ack"
-        sudo ${PKG} -y install ack
-        sudo ${PKG} -y install htop
+        sudo ${PKG} -y install ack      # need epel-release
+        sudo ${PKG} -y install htop     # need epel-release
+
+        curl -L https://raw.githubusercontent.com/yyuu/pyenv-installer/master/bin/pyenv-installer | bash
+        if [[ ! $PATH =~ '/.pyenv/bin' ]];then
+            echo 'export PATH="${HOME}/.pyenv/bin:$PATH"' >> ~/.bash_profile
+            echo 'eval "$(pyenv init -)"' >> ~/.bash_profile
+            echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.bash_profile
+            source ~/.bash_profile
+        fi
+
     elif [ ${SYS} == 'mac' ]
     then
         echo ${SYS}
