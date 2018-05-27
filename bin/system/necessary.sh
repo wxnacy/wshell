@@ -22,6 +22,15 @@ install(){
             libssl-dev libsqlite3-dev libbz2-dev libreadline-dev
         sudo ${PKG} -y install dnsutils     # dig
         sudo ${PKG} -y install ack-grep     # ack
+
+        if [[ ! $PATH =~ '/.pyenv/bin' ]];then
+            curl -L https://raw.githubusercontent.com/yyuu/pyenv-installer/master/bin/pyenv-installer | bash
+            echo 'export PATH="${HOME}/.pyenv/bin:$PATH"' >> ~/.profile
+            echo 'eval "$(pyenv init -)"' >> ~/.profile
+            echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.profile
+            source ~/.bash_profile
+        fi
+
     elif [ ${SYS} == 'centos' ]
     then
         sudo ${PKG} -y install gcc-c++ aclocal
@@ -36,8 +45,8 @@ install(){
         sudo ${PKG} -y install ack      # need epel-release
         sudo ${PKG} -y install htop     # need epel-release
 
-        curl -L https://raw.githubusercontent.com/yyuu/pyenv-installer/master/bin/pyenv-installer | bash
         if [[ ! $PATH =~ '/.pyenv/bin' ]];then
+            curl -L https://raw.githubusercontent.com/yyuu/pyenv-installer/master/bin/pyenv-installer | bash
             echo 'export PATH="${HOME}/.pyenv/bin:$PATH"' >> ~/.bash_profile
             echo 'eval "$(pyenv init -)"' >> ~/.bash_profile
             echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.bash_profile
