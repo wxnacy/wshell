@@ -22,6 +22,7 @@ install(){
             libssl-dev libsqlite3-dev libbz2-dev libreadline-dev
         sudo ${PKG} -y install dnsutils     # dig
         sudo ${PKG} -y install ack-grep     # ack
+        sudo apt -y install htop
 
         if [[ ! $PATH =~ '/.pyenv/bin' ]];then
             curl -L https://raw.githubusercontent.com/yyuu/pyenv-installer/master/bin/pyenv-installer | bash
@@ -29,6 +30,8 @@ install(){
             echo 'eval "$(pyenv init -)"' >> ~/.profile
             echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.profile
             source ~/.profile
+            nohup pyenv install 2.7.12 &
+            nohup pyenv install 3.6.0 &
         fi
 
     elif [ ${SYS} == 'centos' ]
@@ -51,6 +54,8 @@ install(){
             echo 'eval "$(pyenv init -)"' >> ~/.bash_profile
             echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.bash_profile
             source ~/.bash_profile
+            nohup pyenv install 2.7.12 &
+            nohup pyenv install 3.6.0 &
         fi
 
     elif [ ${SYS} == 'mac' ]
