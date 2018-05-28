@@ -28,7 +28,7 @@ install(){
             echo 'export PATH="${HOME}/.pyenv/bin:$PATH"' >> ~/.profile
             echo 'eval "$(pyenv init -)"' >> ~/.profile
             echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.profile
-            source ~/.bash_profile
+            source ~/.profile
         fi
 
     elif [ ${SYS} == 'centos' ]
