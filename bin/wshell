@@ -10,10 +10,10 @@ help(){
     echo ''
     echo 'Some useful Wshell commands are:'
 
-    echo '  update  update the wshell version'
-    echo '  install  Install software by name'
-    echo 'See `pyenv help <command>` for information on a specific command.'
-    echo 'For full documentation, see: https://github.com/yyuu/pyenv#readme'
+    echo '  update      update the wshell version'
+    echo '  install     Install software by name'
+    # echo 'See `wshell help <command>` for information on a specific command.'
+    # echo 'For full documentation, see: https://github.com/yyuu/pyenv#readme'
 }
 
 update(){

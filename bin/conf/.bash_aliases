@@ -18,6 +18,10 @@ alias bs="source ~/.bashrc"
 alias bc="vim ~/.bashrc"
 alias bas="source ~/.bash_aliases"
 alias bac="vim ~/.bash_aliases"
+alias sshc="vim ~/.ssh/config"
+alias vimc="vim ~/.vimrc"
+alias c="clear"
+alias h="history"
 
 # for docker
 alias docker="sudo docker"
