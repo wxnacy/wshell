@@ -2,6 +2,14 @@
 
 CMD=$1
 
+main(){
+    if [ $CMD == 'update' ];then
+        NPWD=${PWD}
+        cd ${HOME}/.wshell
+        git pull
+        cd ${NPWD}
+    fi
+}
 
 if [ ! $CMD ];then
     echo 'wshell 1.0.0'
@@ -10,18 +18,10 @@ if [ ! $CMD ];then
     echo 'Some useful pyenv commands are:'
     echo '  update  update the wshell version'
     echo '  install  Install software by name'
-
+else
+    main
 fi
 
-main(){
-    if [ $CMD == 'update' ];then
-        NPWD=${PWD}
-        cd ${HOME}/.wshell
-        git pull
-        cd ${NPWD}
-
-    fi
-}
 
 
 USAGE='
