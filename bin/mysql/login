@@ -1,0 +1,17 @@
+#!/usr/bin/env expect
+
+# echo 'export MYSQL_PROD_USER=your_prod_user' >> ~/.bash_profile                                                                                         master?
+# echo 'export MYSQL_PROD_PASSWORD=your_prod_password' >> ~/.bash_profile                                                                                master?
+# echo 'export MYSQL_PROD_HOST=your_prod_host' >> ~/.bash_profile
+# source ~/.bash_profile
+
+
+set timeout 10
+
+source [lindex $argv 0]
+
+spawn sh -c "mysql -u${USER} -p -h ${HOST} --tee=${LOG_DIR}/mysql.`date +%Y-%m-%d`.log"
+expect "*assword:*"
+send "${PASSWORD}\r"
+interact
+# expect eof
