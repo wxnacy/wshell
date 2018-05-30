@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+echo $@
 # echo $PWD
 # SYS=`${PWD}/bin/system/check_system.sh`
 # echo $SYS
