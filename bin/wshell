@@ -12,7 +12,8 @@ help(){
 
     echo '  update  update the wshell version'
     echo '  install  Install software by name'
-    echo '  use  Use Wshell software'
+    echo 'See `pyenv help <command>` for information on a specific command.'
+    echo 'For full documentation, see: https://github.com/yyuu/pyenv#readme'
 }
 
 update(){
@@ -28,24 +29,23 @@ install(){
     OSS=(${OS})
     SYS=${OSS[0]}
     VER=${OSS[1]}
+
     echo $SYS
-}
-
-
-use(){
     case "${ARGS[1]}" in
         profile)
             test -f ~/.bash_profile && echo '# the following to ~/.bash_profile:'
             test -f ~/.profile && echo '# the following to ~/.profile:'
             echo '  . ${HOME}/.wshell/bin/conf/.bash_profile';;
-        *)    ;;
+        wvim)
+            curl -L https://raw.githubusercontent.com/wxnacy/wvim/master/install.sh | bash;;
+        *)  ;;
     esac
 }
+
 
 case "$1" in
     update)   update;;
     install)    install;;
-    use) use;;
     help)  help;;
     -h)  help;;
     *)       help;;

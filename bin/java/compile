@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+
+SOURCE_PATH=$1
+TARGET_PATH=$2
+CLASS_PATH=${TARGET_PATH}/classes
+SOURCE=''
+
+if [[ ! ${SOURCE_PATH} || ! ${TARGET_PATH} ]];then
+    echo 'Usage: compile <source_path> <target_path>'
+    exit
+fi
+
+list_file(){
+    # 遍历源码目录并输出到 ${SOURCE_TXT} 中
+    for file in `ls $1`
+    do
+        if test -f $file
+        then
+            SOURCE="${SOURCE} $file"
+        else
+            list_file $1/$file
+        fi
+    done
+}
+
+compile(){
+    # 编译
+    test -d ${CLASS_PATH} || mkdir -p ${CLASS_PATH}
+
+    # rm -rf ${CLASS_PATH}
+    # if [ ! -d "${CLASS_PATH}"  ]; then
+        # mkdir ${CLASS_PATH}
+    # fi
+
+    list_file ${SOURCE_PATH}
+    javac -cp ${CLASS_PATH} -d ${CLASS_PATH} ${SOURCE}
+}
+
+compile

@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+SOURCE_PATH=$1
+TARGET_PATH=$2
+CLASS_PATH=${TARGET_PATH}/classes
+MAIN=$3
+
+compile=${0//java\/run/java\/compile}
+${compile} ${SOURCE_PATH} ${TARGET_PATH}
+java -cp ${CLASS_PATH} $MAIN
+
+
