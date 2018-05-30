@@ -23,9 +23,13 @@ echo ${arr[2]}
 # echo $SYS
 # echo $VER
 
-echo $PATH
-if [[ ! $PATH =~ '/usr/local/phantomjs/bin' ]];then
-    echo 'yes'
-else
-    echo 'no'
+# echo $PATH
+# if [[ ! $PATH =~ '/usr/local/phantomjs/bin' ]];then
+    # echo 'yes'
+# else
+    # echo 'no'
+# fi
+
+if which git > /dev/null;then
+    echo 'has'
 fi

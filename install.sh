@@ -6,7 +6,6 @@ test -d ${WSHELL_HOME} || git clone https://github.com/wxnacy/wshell ${WSHELL_HO
 
 
 if [[ ! $PATH =~ '.wshell/bin' ]];then
-
     echo 'WARNING: seems you still have not added 'wshell' to the load path.'
     echo ''
     echo '# Load pyenv automatically by adding'

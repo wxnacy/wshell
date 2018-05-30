@@ -1,31 +1,52 @@
 #!/usr/bin/env bash
 
+WSHELL_HOME=${HOME}/.wshell
 CMD=$1
+ARGS=($@)
 
-main(){
-    if [ $CMD == 'update' ];then
-        NPWD=${PWD}
-        cd ${HOME}/.wshell
-        git pull
-        cd ${NPWD}
-    fi
-}
-
-if [ ! $CMD ];then
+error(){
     echo 'wshell 1.0.0'
     echo 'Usage: wshell <command> [<args>]'
     echo ''
     echo 'Some useful pyenv commands are:'
     echo '  update  update the wshell version'
     echo '  install  Install software by name'
-else
-    main
-fi
+}
 
+update(){
+    NPWD=${PWD}
+    cd ${HOME}/.wshell
+    git pull
+    cd ${NPWD}
+}
 
+install(){
+    PN=${ARGS[1]}
+    OS=`${WSHELL_HOME}/bin/system/check_system.sh`
+    OSS=(${OS})
+    SYS=${OSS[0]}
+    VER=${OSS[1]}
+    echo $SYS
+}
+
+use(){
+    case "${ARGS[1]}" in
+        profile)
+            echo '# the following to ~/.bash_profile:'
+            echo '. ${HOME}/.wshell/bin/conf/bash_profile';;
+        *)    ;;
+    esac
+}
+
+case "$1" in
+    update)   update;;
+    install)    install;;
+    use) use;;
+    status)  status;;
+    *)       error;;
+esac
 
 USAGE='
-
 
    commands    List all available pyenv commands\n
    local       Set or show the local application-specific Python version
