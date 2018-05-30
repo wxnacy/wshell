@@ -29,11 +29,16 @@ install(){
     echo $SYS
 }
 
+use_profile(){
+    [ test -f ~/.bash_profile ]
+}
+
 use(){
     case "${ARGS[1]}" in
         profile)
-            echo '# the following to ~/.bash_profile:'
-            echo '. ${HOME}/.wshell/bin/conf/bash_profile';;
+            test -f ~/.bash_profile && echo '# the following to ~/.bash_profile:'
+            test -f ~/.profile && echo '# the following to ~/.profile:'
+            echo '  . ${HOME}/.wshell/bin/conf/.bash_profile';;
         *)    ;;
     esac
 }
