@@ -5,8 +5,15 @@ alias gst="git status"
 # for system
 alias ..="cd .."
 alias ...="cd ../.."
-alias bps="source ~/.bash_profile"
-alias bpc="vim ~/.bash_profile"
+alias ....="cd ../../.."
+if [ -f ~/.bash_profile ];then
+    alias bps="source ~/.bash_profile"
+    alias bpc="vim ~/.bash_profile"
+fi
+if [ -f ~/.profile ];then
+    alias bps="source ~/.profile"
+    alias bpc="vim ~/.profile"
+fi
 alias bs="source ~/.bashrc"
 alias bc="vim ~/.bashrc"
 alias bas="source ~/.bash_aliases"
