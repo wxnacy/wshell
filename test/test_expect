@@ -1,0 +1,31 @@
+#!/usr/bin/env expect
+
+puts "Hello World"
+puts $argc
+
+set conf ''
+
+
+if { $argc == 0 } {
+    set conf /usr/local/etc/wshell/mysql.conf
+}
+
+puts $conf
+
+source $conf
+
+# puts $user
+
+puts [info exists user]
+puts [info exists password]
+puts [info exists db]
+
+# puts `file exists $conf`
+
+# puts [file join $conf "myfile.txt"]
+# file mkdir files
+
+# puts $env(HOME)/.wshell
+# puts [file isfile $env(HOME)/.wshell]
+# puts [file type $env(HOME)/.wshell]
+# puts [file exists /usr/local/etc]

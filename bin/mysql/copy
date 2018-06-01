@@ -1,0 +1,18 @@
+#!/usr/bin/env expect
+
+set timeout 10
+source [lindex $argv 0]
+
+
+spawn sh -c "mysqldump \
+    --default-character-set=utf8mb4 --routines --single-transaction --force -v \
+    --add-drop-table --create-options --quick --extended-insert --compress \
+    -u${source_user} -p -h ${source_host} ${source_db} ${source_table} > ${dump_dir}/${source_db}_${source_table}.sql"
+expect "*password:*"
+send "${source_password}\r"
+interact
+
+spawn sh -c "mysql -u${user} -p ${db} < ${dump_dir}/${source_db}_${source_table}.sql"
+expect "*password:*"
+send "${password}\r"
+interact

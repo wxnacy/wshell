@@ -12,6 +12,7 @@ help(){
 
     echo '  update      update the wshell version'
     echo '  install     Install software by name'
+    echo '  mysql       run mysql shell'
     # echo 'See `wshell help <command>` for information on a specific command.'
     # echo 'For full documentation, see: https://github.com/yyuu/pyenv#readme'
 }
@@ -42,10 +43,20 @@ install(){
     esac
 }
 
+mysql(){
+    case "${ARGS[1]}" in
+        login) ${WSHELL_HOME}/bin/mysql/login ${ARGS[2]};;
+        run) ${WSHELL_HOME}/bin/mysql/run ${ARGS[2]};;
+        *)  ;;
+    esac
+
+}
+
 
 case "$1" in
     update)   update;;
     install)    install;;
+    mysql)    mysql;;
     help)  help;;
     -h)  help;;
     *)       help;;

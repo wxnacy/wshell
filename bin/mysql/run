@@ -1,0 +1,63 @@
+#!/usr/bin/env expect
+
+puts $argv
+if { [lindex $argc] == 0 } {
+    puts "Usage: wshell mysql run [configure_path] <sql>"
+    puts ""
+    puts "Or"
+    puts ""
+    puts "Put the configure on /etc/wshell/mysql.conf or /usr/local/etc/wshell/mysql.conf"
+    exit
+}
+
+puts $argv
+
+# set conf [lindex $argv 0]
+# puts [lindex $argv 0]
+
+# set sql [lindex $argv 0]
+
+# if { [file exists $conf] == 0 } {
+    # set conf /etc/wshell/mysql.conf
+# }
+
+# if { [file exists $conf] == 0 } {
+    # set conf /usr/local/etc/wshell/mysql.conf
+# }
+
+# if { [file exists $conf] == 0 } {
+    # puts "Usage: wshell mysql run [configure_path] <sql>"
+    # puts ""
+    # puts "Or"
+    # puts ""
+    # puts "Put the configure on /etc/wshell/mysql.conf or /usr/local/etc/wshell/mysql.conf"
+    # exit
+# }
+
+# source $conf
+
+# if { [info exists port] == 0 } {
+    # set port 3306
+# }
+# if { [info exists host] == 0 } {
+    # set host localhost
+# }
+# if { [info exists log_dir] } {
+    # if { [file isdirectory ${log_dir}] == 0 } {
+        # puts "Directory '${log_dir}' does not exist"
+        # exit
+    # }
+    # set log --tee=${log_dir}/mysql.[clock scan 1997].log
+# } else {
+    # set log ""
+# }
+
+# spawn sh -c "mysql -u${user} -p -h ${host} ${log}"
+# expect "*assword:*"
+# send "${password}\r"
+# if { [info exists db] } {
+    # send "use ${db};\r"
+# }
+# send "${sql};\n"
+# send "exit;\r"
+# interact
