@@ -144,5 +144,6 @@ var/
 .installed.cfg
 *.egg
 tmp/*
+*tmp*
 
 # for public end

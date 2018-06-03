@@ -11,7 +11,7 @@ if { [file exists $conf] == 0 } {
 }
 
 if { [file exists $conf] == 0 } {
-    puts "Usage: wshell mysql login <configure_path>"
+    puts "Usage: wshell mysql dump <configure_path>"
     puts ""
     puts "Or"
     puts ""
@@ -27,21 +27,21 @@ if { [info exists port] == 0 } {
 if { [info exists host] == 0 } {
     set host localhost
 }
-if { [info exists logdir] } {
-    if { [file isdirectory ${logdir}] == 0 } {
-        puts "Directory '${logdir}' does not exist"
+if { [info exists log_dir] } {
+    if { [file isdirectory ${log_dir}] == 0 } {
+        puts "Directory '${log_dir}' does not exist"
         exit
     }
-    set log --tee=${logdir}/mysql.[clock scan 1997].log
+    set log --tee=${log_dir}/mysql.[clock scan 1997].log
 } else {
     set log ""
 }
-puts ${password}
-spawn sh -c "mysql -u${user} -p -h ${host} ${log}"
-expect "*assword:*"
+
+spawn sh -c "mysqldump \
+    --default-character-set=utf8mb4 --routines --single-transaction --force -v \
+    --add-drop-table --create-options --quick --extended-insert --compress \
+    -u${user} -p -h ${host} -P ${port} ${db} \
+    > ${dumpdir}/${db}-`date +%Y-%m-%d_%H:%M:%S`.sql"
+expect "*password:*"
 send "${password}\r"
-if { [info exists db] } {
-    send "use ${db};\r"
-}
-# send "exit;\r"
 interact

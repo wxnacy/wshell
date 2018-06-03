@@ -46,10 +46,37 @@ install(){
 mysql(){
     case "${ARGS[1]}" in
         login) ${WSHELL_HOME}/bin/mysql/login ${ARGS[2]};;
+        dump) ${WSHELL_HOME}/bin/mysql/dump ${ARGS[2]};;
         run) ${WSHELL_HOME}/bin/mysql/run ${ARGS[2]};;
         *)  ;;
     esac
 
+}
+
+make_mysql(){
+    case "$1" in
+        dump) ${WSHELL_HOME}/bin/mysql/dump ${ARGS[2]};;
+        login)
+            name=mysql.login.conf
+            echo 'set user user' >> ${name}
+            echo 'set password password' >> ${name}
+            echo '# set host localhost' >> ${name}
+            echo '# set port 3306' >> ${name}
+            echo '# set db db_name' >> ${name}
+            echo '# set logdir /var/log/wshell' >> ${name};;
+        run) ${WSHELL_HOME}/bin/mysql/run ${ARGS[2]};;
+        *)  ;;
+    esac
+}
+
+make(){
+
+    case "${ARGS[1]}" in
+        mysql) make_mysql ${ARGS[2]};;
+        dump) ${WSHELL_HOME}/bin/mysql/dump ${ARGS[2]};;
+        run) ${WSHELL_HOME}/bin/mysql/run ${ARGS[2]};;
+        *)  ;;
+    esac
 }
 
 
@@ -57,6 +84,7 @@ case "$1" in
     update)   update;;
     install)    install;;
     mysql)    mysql;;
+    make)    make;;
     help)  help;;
     -h)  help;;
     *)       help;;
