@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+BP=~/.bash_profile
+if [ -f ~/.profile ];then
+    BP=~/.profile
+fi
+if [[ ! $PATH =~ '/.pyenv/bin' ]];then
+    curl -L https://raw.githubusercontent.com/yyuu/pyenv-installer/master/bin/pyenv-installer | bash
+    echo 'export PATH="${HOME}/.pyenv/bin:$PATH"' >> $BP
+    echo 'eval "$(pyenv init -)"' >> $BP
+    echo 'eval "$(pyenv virtualenv-init -)"' >> $BP
+    source $BP
+    nohup pyenv install 2.7.12 &
+    nohup pyenv install 3.6.0 &
+fi

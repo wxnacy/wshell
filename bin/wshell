@@ -31,10 +31,9 @@ install(){
     SYS=${OSS[0]}
     VER=${OSS[1]}
 
-    echo $SYS
     case "${ARGS[1]}" in
         wvim)
-            curl -L https://raw.githubusercontent.com/wxnacy/wvim/master/install.sh | bash;;
+            curl -L https://raw.githubusercontent.com/wxnacy/wvim/master/install | bash;;
         *)  ;;
     esac
 }
