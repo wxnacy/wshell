@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+test -f ~/.bash_profile && echo '# the following to ~/.bash_profile:'
+test -f ~/.profile && echo '# the following to ~/.profile:'
+echo '  . ${HOME}/.wshell/conf/system/.bash_profile'

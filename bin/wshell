@@ -26,17 +26,13 @@ update(){
 
 install(){
     PN=${ARGS[1]}
-    OS=`${WSHELL_HOME}/bin/system/check_system.sh`
+    OS=`${0/%wshell/system\/check}`
     OSS=(${OS})
     SYS=${OSS[0]}
     VER=${OSS[1]}
 
     echo $SYS
     case "${ARGS[1]}" in
-        profile)
-            test -f ~/.bash_profile && echo '# the following to ~/.bash_profile:'
-            test -f ~/.profile && echo '# the following to ~/.profile:'
-            echo '  . ${HOME}/.wshell/bin/conf/.bash_profile';;
         wvim)
             curl -L https://raw.githubusercontent.com/wxnacy/wvim/master/install.sh | bash;;
         *)  ;;
