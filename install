@@ -1,9 +1,24 @@
 #!/usr/bin/env bash
 
+OS=`curl -L https://raw.githubusercontent.com/wxnacy/wshell/master/bin/system/check | bash`
+OSS=(${OS})
+SYS=${OSS[0]}
+VER=${OSS[1]}
+# if [ ${SYS} == 'ubuntu' ]
+# then
+
+
+if [ ${SYS} == 'centos' ]
+then
+
+    sudo yum -y install git
+
+
+fi
+
 WSHELL_HOME=${HOME}/.wshell
 
 test -d ${WSHELL_HOME} || git clone https://github.com/wxnacy/wshell ${WSHELL_HOME}
-
 
 if [[ ! $PATH =~ '.wshell/bin' ]];then
     echo 'WARNING: seems you still have not added 'wshell' to the load path.'
