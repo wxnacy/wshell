@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+
+OS=${0/%install/check}
+OSS=""
+if [ -f $OS ];then
+    TMP=`${OS}`
+    OSS=($TMP)
+else
+    OS=`curl -L https://raw.githubusercontent.com/wxnacy/wshell/master/bin/system/check_system.sh | bash`
+    OSS=(${OS})
+fi
+SYS=${OSS[0]}
+VER=${OSS[1]}
+
+
+if [ ${SYS} == 'ubuntu' ]
+then
+
+    sudo apt update -y
+    sudo apt -y install htop
+
+elif [ ${SYS} == 'centos' ]
+then
+
+    sudo yum -y install epel-release
+    sudo yum -y install ack
+
+elif [ ${SYS} == 'Darwin' ]
+then
+
+    brew install ack
+
+fi

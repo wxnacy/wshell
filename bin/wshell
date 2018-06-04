@@ -24,19 +24,6 @@ update(){
     cd ${NPWD}
 }
 
-install(){
-    PN=${ARGS[1]}
-    OS=`${0/%wshell/system\/check}`
-    OSS=(${OS})
-    SYS=${OSS[0]}
-    VER=${OSS[1]}
-
-    case "${ARGS[1]}" in
-        wvim)
-            curl -L https://raw.githubusercontent.com/wxnacy/wvim/master/install | bash;;
-        *)  ;;
-    esac
-}
 
 other(){
     SH=${0/%wshell/${1}/${2}}
@@ -49,7 +36,6 @@ other(){
 
 case "$1" in
     update)   update;;
-    install)    install;;
     help)  help;;
     -h)  help;;
     *)       other $1 $2 $3;;

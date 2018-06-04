@@ -32,7 +32,6 @@ install(){
         sudo ${PKG} -y install ack-grep     # ack
         sudo apt -y install htop
 
-
     elif [ ${SYS} == 'centos' ]
     then
         sudo ${PKG} -y install gcc-c++ aclocal
