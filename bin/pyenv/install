@@ -1,9 +1,41 @@
 #!/usr/bin/env bash
 
+OS=${0/%install/check}
+OSS=""
+if [ -f $OS ];then
+    TMP=`${OS}`
+    OSS=($TMP)
+else
+    OS=`curl -L https://raw.githubusercontent.com/wxnacy/wshell/master/bin/system/check_system.sh | bash`
+    OSS=(${OS})
+fi
+SYS=${OSS[0]}
+VER=${OSS[1]}
+
+
+if [ ${SYS} == 'ubuntu' ]
+then
+
+    sudo apt update -y
+    sudo apt -y install gcc
+
+elif [ ${SYS} == 'centos' ]
+then
+
+    sudo yum -y install gcc
+
+elif [ ${SYS} == 'Darwin' ]
+then
+
+    brew install ack
+
+fi
+
 BP=~/.bash_profile
 if [ -f ~/.profile ];then
     BP=~/.profile
 fi
+
 if [[ ! $PATH =~ '/.pyenv/bin' ]];then
     curl -L https://raw.githubusercontent.com/yyuu/pyenv-installer/master/bin/pyenv-installer | bash
     echo 'export PATH="${HOME}/.pyenv/bin:$PATH"' >> $BP
