@@ -43,66 +43,21 @@ install(){
     esac
 }
 
-mysql(){
-    case "${ARGS[1]}" in
-        login) ${WSHELL_HOME}/bin/mysql/login ${ARGS[2]};;
-        dump) ${WSHELL_HOME}/bin/mysql/dump ${ARGS[2]};;
-        run) ${WSHELL_HOME}/bin/mysql/run ${ARGS[2]};;
-        *)  ;;
-    esac
-
+other(){
+    SH=${0/%wshell/${1}/${2}}
+    if [ -f $SH ];then
+        $SH
+    else
+        help
+    fi
 }
-
-make_mysql(){
-    case "$1" in
-        dump) ${WSHELL_HOME}/bin/mysql/dump ${ARGS[2]};;
-        login)
-            name=mysql.login.conf
-            echo 'set user user' >> ${name}
-            echo 'set password password' >> ${name}
-            echo '# set host localhost' >> ${name}
-            echo '# set port 3306' >> ${name}
-            echo '# set db db_name' >> ${name}
-            echo '# set logdir /var/log/wshell' >> ${name};;
-        run) ${WSHELL_HOME}/bin/mysql/run ${ARGS[2]};;
-        *)  ;;
-    esac
-}
-
-make(){
-
-    case "${ARGS[1]}" in
-        mysql) make_mysql ${ARGS[2]};;
-        dump) ${WSHELL_HOME}/bin/mysql/dump ${ARGS[2]};;
-        run) ${WSHELL_HOME}/bin/mysql/run ${ARGS[2]};;
-        *)  ;;
-    esac
-}
-
 
 case "$1" in
     update)   update;;
     install)    install;;
-    mysql)    mysql;;
-    make)    make;;
     help)  help;;
     -h)  help;;
-    *)       help;;
+    *)       other $1 $2 $3;;
 esac
 
-USAGE='
 
-   commands    List all available pyenv commands\n
-   local       Set or show the local application-specific Python version
-   global      Set or show the global Python version
-   shell       Set or show the shell-specific Python version
-   install     Install a Python version using python-build
-   uninstall   Uninstall a specific Python version
-   rehash      Rehash pyenv shims (run this after installing executables)
-   version     Show the current Python version and its origin
-   versions    List all Python versions available to pyenv
-   which       Display the full path to an executable
-   whence      List all Python versions that contain the given executable
-
-See `pyenv help <command>` for information on a specific command.
-For full documentation, see: https://github.com/yyuu/pyenv#readme'
