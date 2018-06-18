@@ -27,7 +27,7 @@ then
 elif [ ${SYS} == 'Darwin' ]
 then
 
-    brew install ack
+    echo 'mac'
 
 fi
 
