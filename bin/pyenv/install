@@ -17,12 +17,13 @@ if [ ${SYS} == 'ubuntu' ]
 then
 
     sudo apt update -y
-    sudo apt -y install gcc make zlib1g.dev
+    sudo apt -y install git gcc make patch zlib1g.dev libgdbm-dev libssl-dev libsqlite3-dev libbz2-dev libreadline-dev
 
 elif [ ${SYS} == 'centos' ]
 then
 
-    sudo yum -y install gcc zlib zlib-devel
+    sudo yum update -y
+    sudo yum -y install git gcc readline readline-devel readline-static openssl openssl-devel openssl-static sqlite-devel bzip2-devel bzip2-libs
 
 elif [ ${SYS} == 'Darwin' ]
 then
