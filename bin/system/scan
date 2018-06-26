@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+pyenv=`command -v pyenv`
+nvm=`command -v nvm`
+
+
+echo $pyenv $nvm
+echo  `command -v nvm`
+echo  `command -v java`
