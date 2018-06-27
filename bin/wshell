@@ -53,6 +53,20 @@ check(){
     echo 'To install package. '
 }
 
+install(){
+    SH=${0/%wshell/${1}/${2}}
+    if [ -f $SH ];then
+        $SH
+    else
+        SH=${0/%wshell/${2}/${1}}
+        if [ -f $SH ];then
+            $SH
+        else
+            help
+        fi
+    fi
+}
+
 other(){
     SH=${0/%wshell/${1}/${2}}
     if [ -f $SH ];then
@@ -65,6 +79,7 @@ other(){
 case "$1" in
     update)   update;;
     check)   check;;
+    install)   install;;
     help)  help;;
     -h)  help;;
     *)       other $1 $2 $3;;
