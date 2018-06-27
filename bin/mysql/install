@@ -16,6 +16,12 @@ if [ $SYS == 'ubuntu' ];then
     sudo apt update -y
     sudo apt install -y mysql-server
 elif [ $SYS == 'centos' ];then
+    wget https://dev.mysql.com/get/mysql80-community-release-el7-1.noarch.rpm
+    sudo rpm -ivh mysql80-community-release-el7-1.noarch.rpm
     sudo yum update -y
+    sudo yum install -y mysql-server
+    sudo systemctl start mysqld
+
+
 
 fi
