@@ -16,12 +16,20 @@ if [ $SYS == 'ubuntu' ];then
     sudo apt update -y
     sudo apt install -y mysql-server
 elif [ $SYS == 'centos' ];then
-    pkg=mysql80-community-release-el7-1.noarch.rpm
-    sudo yum install -y wget
-    wget https://dev.mysql.com/get/$pkg
-    sudo rpm -ivh $pkg
-    sudo yum update -y
-    sudo yum install -y mysql-server
-    sudo systemctl start mysqld
+    if [ ! `command -v mysql` ];then
+        pkg=mysql80-community-release-el7-1.noarch.rpm
+        sudo yum install -y wget
+        wget https://dev.mysql.com/get/$pkg
+        sudo rpm -ivh $pkg
+        sudo yum update -y
+        sudo yum install -y mysql-server
+        sudo systemctl start mysqld
+    fi
+
+    pass=`sudo grep 'temporary password' /var/log/mysqld.log`
+    ps=(${pass})
+    echo "Mysql password is: ${ps[-1]}"
+elif [ $SYS == 'mac' ];then
+    2018-06-27T09:46:58.084829Z 5 [Note] [MY-010454] [Server] A temporary password is generated for root@localhost: jSl2sq#MGyQD
 
 fi
