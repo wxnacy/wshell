@@ -25,8 +25,27 @@ update(){
 }
 
 check(){
-    echo 'pyenv install on ' `command -v pyenv`
-    echo 'nvm install on ' `command -v nvm`
+    notinstall=''
+    echo -e '\nInstall:'
+    for i in  gcc g++ make cmake git vim wget unzip expect openssl c++ ack \
+        htop http dig pyenv python java mysql docker nginx ;do
+        path=`command -v $i`
+        if [ $path ];then
+            echo -e "$i\tinstall on $path"
+        else
+            notinstall="$i $notinstall"
+        fi
+    done
+
+    if [ -d $HOME/.nvm ];then
+        echo -e "nvm \tinstall on $HOME/.nvm"
+    fi
+
+    echo -e '\nNot install:'
+    echo -e "\t$notinstall"
+    echo 'You can use command:'
+    echo -e '\twshell <package> install'
+    echo 'To install package. '
 }
 
 other(){
