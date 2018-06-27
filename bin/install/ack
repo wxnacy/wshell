@@ -17,7 +17,7 @@ if [ ${SYS} == 'ubuntu' ]
 then
 
     sudo apt update -y
-    sudo apt -y install htop
+    sudo apt -y install ack-grep
 
 elif [ ${SYS} == 'centos' ]
 then
