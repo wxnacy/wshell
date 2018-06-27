@@ -25,7 +25,7 @@ install(){
     if [ ${SYS} == 'ubuntu' ]
     then
         sudo ${PKG} -y install htop python-pip
-        sudo apt install httpie
+        sudo apt -y install httpie
         sudo apt -y install patch zlib1g.dev libgdbm-dev \
             libssl-dev libsqlite3-dev libbz2-dev libreadline-dev
         sudo ${PKG} -y install dnsutils     # dig
