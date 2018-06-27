@@ -1,3 +1,33 @@
 #!/usr/bin/env bash
 
+
+install_vim(){
+    OS=${0/%install\/wvim/system\/check}
+    OSS=""
+    if [ -f $OS ];then
+        TMP=`${OS}`
+        OSS=($TMP)
+    else
+        OS=`curl -L https://raw.githubusercontent.com/wxnacy/wshell/master/bin/system/check | bash`
+        OSS=(${OS})
+    fi
+    SYS=${OSS[0]}
+    VER=${OSS[1]}
+
+    pkg=yum
+
+    if [ ${SYS} == 'ubuntu' ]
+    then
+        pkg=apt
+    elif [ ${SYS} == 'Darwin' ]
+    then
+        pkg=brew
+    fi
+    sudo $pkg install -y vim
+
+}
+
+if [ ! `command -v vim` ];then
+    install_vim
+fi
 curl -L https://raw.githubusercontent.com/wxnacy/wvim/master/install | bash
