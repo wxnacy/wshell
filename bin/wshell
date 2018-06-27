@@ -79,7 +79,7 @@ other(){
 case "$1" in
     update)   update;;
     check)   check;;
-    install)   install;;
+    install)   install $1 $2;;
     help)  help;;
     -h)  help;;
     *)       other $1 $2 $3;;
