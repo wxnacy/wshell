@@ -37,9 +37,14 @@ check(){
         fi
     done
 
-    if [ -d $HOME/.nvm ];then
-        echo -e "nvm \tinstall on $HOME/.nvm"
-    fi
+
+    for i in nvm wvim;do
+        if [ -d $HOME/.$i ];then
+            echo -e "$i \tinstall on $HOME/.$i"
+        else
+            notinstall="$i $notinstall"
+        fi
+    done
 
     echo -e '\nNot install:'
     echo -e "\t$notinstall"
