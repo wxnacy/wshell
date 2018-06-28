@@ -18,8 +18,9 @@ if [ $SYS == 'ubuntu' ];then
 elif [ $SYS == 'centos' ];then
     if [ ! `command -v mysql` ];then
         pkg=mysql80-community-release-el7-1.noarch.rpm
+
         sudo yum install -y wget
-        wget https://dev.mysql.com/get/$pkg
+        test -f $pkg || wget https://dev.mysql.com/get/$pkg
         sudo rpm -ivh $pkg
         sudo yum update -y
         sudo yum install -y mysql-server

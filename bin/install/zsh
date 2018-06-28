@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+
+
+install_zsh(){
+    OS=${0/%install\/wvim/system\/check}
+    OSS=""
+    if [ -f $OS ];then
+        TMP=`${OS}`
+        OSS=($TMP)
+    else
+        OS=`curl -L https://raw.githubusercontent.com/wxnacy/wshell/master/bin/system/check | bash`
+        OSS=(${OS})
+    fi
+    SYS=${OSS[0]}
+    VER=${OSS[1]}
+
+    pkg=yum
+
+    if [ ${SYS} == 'ubuntu' ]
+    then
+        pkg=apt
+    elif [ ${SYS} == 'Darwin' ]
+    then
+        pkg=brew
+    fi
+    sudo $pkg install -y zsh
+    chsh -s /bin/zsh
+}
+
+if [ ! `command -v zsh` ];then
+    install_zsh
+
+fi
+
+sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
