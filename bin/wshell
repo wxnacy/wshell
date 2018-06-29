@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 WSHELL_HOME=${HOME}/.wshell
+VERSION=1.0.0
 CMD=$1
 ARGS=($@)
 
@@ -10,7 +11,7 @@ SYS=${OSS[0]}
 VER=${OSS[1]}
 
 help(){
-    echo 'Wshell Version: 1.0.0'
+    echo "Wshell Version: ${VERSION}"
     echo "Your system are: ${OS}"
     echo ''
     echo 'Usage: wshell <command> [<args>]'
