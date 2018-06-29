@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-
-BP=~/.bash_profile
-if [ -f ~/.profile ];then
-    BP=~/.profile
-fi
-
-echo "# the following to $BP:"
-echo '  . ${HOME}/.wshell/conf/system/.bash_profile'

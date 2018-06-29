@@ -4,6 +4,11 @@ WSHELL_HOME=${HOME}/.wshell
 CMD=$1
 ARGS=($@)
 
+OS=`${0/%wshell/system\/check}`
+OSS=(${OS})
+SYS=${OSS[0]}
+VER=${OSS[1]}
+
 help(){
     echo 'wshell 1.0.0'
     echo 'Usage: wshell <command> [<args>]'
@@ -25,6 +30,7 @@ update(){
 }
 
 check(){
+    echo "Your system are: ${OS}"
     notinstall=''
     echo -e '\nInstall:'
     for i in  gcc g++ make cmake git vim wget unzip expect openssl c++ ack \
