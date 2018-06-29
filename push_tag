@@ -14,7 +14,7 @@ main(){
 
 if [ ! ${TAG_NAME} ]
 then
-    echo 'UAGE: ./git_push.sh <tag_name> <push message>'
+    echo 'UAGE: ./git_push <tag_name> <push message>'
 else
     main
 fi
