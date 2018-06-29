@@ -10,14 +10,18 @@ SYS=${OSS[0]}
 VER=${OSS[1]}
 
 help(){
-    echo 'wshell 1.0.0'
+    echo 'Wshell Version: 1.0.0'
+    echo "Your system are: ${OS}"
+    echo ''
     echo 'Usage: wshell <command> [<args>]'
     echo ''
     echo 'Some useful Wshell commands are:'
 
-    echo '  update      update the wshell version'
-    echo '  install     Install software by name'
-    echo '  mysql       run mysql shell'
+    echo -e '\tinstall\tInstall software by name'
+    echo -e '\tupdate\tUpdate the wshell version'
+    echo -e '\tcheck\tCheck the installation of common software'
+    echo -e '\t<software> <command>\tRun software script'
+    # echo -e '\tmysql\tRun mysql shell'
     # echo 'See `wshell help <command>` for information on a specific command.'
     # echo 'For full documentation, see: https://github.com/yyuu/pyenv#readme'
 }
@@ -83,9 +87,9 @@ other(){
 }
 
 case "$1" in
-    update)   update;;
-    check)   check;;
     install)   install $1 $2;;
+    check)   check;;
+    update)   update;;
     help)  help;;
     -h)  help;;
     *)       other $1 $2 $3;;

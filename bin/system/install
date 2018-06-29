@@ -30,7 +30,6 @@ install(){
             libssl-dev libsqlite3-dev libbz2-dev libreadline-dev
         sudo ${PKG} -y install dnsutils     # dig
         sudo ${PKG} -y install ack-grep     # ack
-        sudo apt -y install htop
 
     elif [ ${SYS} == 'centos' ]
     then
