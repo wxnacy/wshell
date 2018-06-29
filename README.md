@@ -6,7 +6,6 @@ Wshell 是集成化的 Linux 服务器脚本，主旨是尽量将常用软件的
 - Ubuntu
 - CentOS
 
-[TOC]
 
 ## 安装
 

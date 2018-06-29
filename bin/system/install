@@ -21,12 +21,12 @@ fi
 install(){
     sudo ${PKG} -y update
     sudo ${PKG} -y install gcc g++ make cmake
-    sudo ${PKG} -y install git vim wget unzip expect
+    sudo ${PKG} -y install git vim wget unzip expect patch
     if [ ${SYS} == 'ubuntu' ]
     then
         sudo ${PKG} -y install htop python-pip
         sudo apt -y install httpie
-        sudo apt -y install patch zlib1g.dev libgdbm-dev \
+        sudo apt -y install zlib1g.dev libgdbm-dev \
             libssl-dev libsqlite3-dev libbz2-dev libreadline-dev
         sudo ${PKG} -y install dnsutils     # dig
         sudo ${PKG} -y install ack-grep     # ack
