@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+OS=${0/%install\/ack/system\/check}
+OSS=""
+if [ -f $OS ];then
+    TMP=`${OS}`
+    OSS=($TMP)
+else
+    OS=`curl -L https://raw.githubusercontent.com/wxnacy/wshell/master/bin/system/check | bash`
+    OSS=(${OS})
+fi
+SYS=${OSS[0]}
+VER=${OSS[1]}
+
+
+if [ ${SYS} == 'ubuntu' ]
+then
+
+    sudo apt -y install dnsutils
+
+elif [ ${SYS} == 'centos' ]
+then
+
+    sudo yum -y install bind-utils
+
+elif [ ${SYS} == 'Darwin' ]
+then
+
+    brew install dig
+
+fi
