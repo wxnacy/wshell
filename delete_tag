@@ -2,10 +2,12 @@
 
 TAG_NAME=$1
 
-
 main(){
+    echo $TAG_NAME
     for tag in `git tag -l ${TAG_NAME}`
     do
+        echo $tag
+
         git tag -d ${tag}
         git push origin :${tag}
     done
