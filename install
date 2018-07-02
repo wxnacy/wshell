@@ -8,6 +8,10 @@ VER=${OSS[1]}
 if [ ${SYS} == 'centos' ]
 then
     sudo yum -y install git
+elif [ ${SYS} == 'ubuntu' ]
+then
+    sudo apt update -y
+    sudo apt -y install git
 fi
 
 WSHELL_HOME=${HOME}/.wshell
