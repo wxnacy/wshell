@@ -21,11 +21,12 @@ elif [ $SYS == 'centos' ];then
         # sudo yum install -y wget
         # test -f $pkg || wget https://dev.mysql.com/get/$pkg
         sudo rpm -ivh https://dev.mysql.com/get/$pkg
+        sudo yum install -y yum-utils
         sudo yum-config-manager --disable mysql80-community
         sudo yum-config-manager --enable mysql57-community
         sudo yum update -y
         # sudo yum install -y mysql-server
-        sudo yum install mysql-community-server
+        sudo yum install -y mysql-community-server
         sudo systemctl start mysqld
         # rm $pkg
     else

@@ -33,6 +33,7 @@ install(){
 
     elif [ ${SYS} == 'centos' ]
     then
+        sudo yum install -y yum-utils
         sudo ${PKG} -y install c++
         sudo ${PKG} -y install pcre pcre-devel openssl openssl-devel # nginx
         sudo ${PKG} -y install epel-release htop # htop need

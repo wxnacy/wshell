@@ -57,6 +57,15 @@ check(){
         fi
     done
 
+    if [ $SYS == 'centos' ];then
+        path=`command -v yum-config-manager`
+        if [ $path ];then
+            echo -e "yum-utils\tinstall on $path"
+        else
+            notinstall="yum-utils $notinstall"
+        fi
+    fi
+
     echo -e '\nNot install:'
     echo -e "\t$notinstall"
     echo 'You can use command:'
