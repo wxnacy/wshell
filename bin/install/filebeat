@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+VERSION=6.3.0
+
+OS=${0/%install\/es/system\/check}
+OSS=""
+if [ -f $OS ];then
+    TMP=`${OS}`
+    OSS=($TMP)
+else
+    OS=`curl -L https://raw.githubusercontent.com/wxnacy/wshell/master/bin/system/check | bash`
+    OSS=(${OS})
+fi
+SYS=${OSS[0]}
+VER=${OSS[1]}
+
+if [ ! `command -v java` ];then
+    `${0/%install\/es/java\/install}`
+fi
+
+
+if [ $SYS == 'ubuntu' ];then
+    echo 'ubuntu not install'
+elif [ $SYS == 'centos' ];then
+    sudo rpm -ivh https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-6.3.0-x86_64.rpm
+    sudo systemctl daemon-reload
+    sudo systemctl enable kibana
+    sudo systemctl start kibana
+fi
