@@ -1,7 +1,0 @@
-#!/usr/local/env bash
-
-sudo yum install -y java-1.8.0-openjdk.x86_64
-sudo rpm --install https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-6.2.4.rpm
-sudo systemctl daemon-reload
-sudo systemctl enable elasticsearch.service
-sudo systemctl start elasticsearch.service

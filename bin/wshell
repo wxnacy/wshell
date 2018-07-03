@@ -74,11 +74,12 @@ check(){
 }
 
 install(){
-    SH=${0/%wshell/${1}/${2}}
+    name=${2}
+    SH=${0/%wshell/${1}/${name}}
     if [ -f $SH ];then
         $SH
     else
-        SH=${0/%wshell/${2}/${1}}
+        SH=${0/%wshell/${name}/${1}}
         if [ -f $SH ];then
             $SH
         else
