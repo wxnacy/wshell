@@ -1,4 +1,4 @@
-#!/usr/local/env bash
+#!/usr/bin/env bash
 
 OS=${0/%install\/es/system\/check}
 OSS=""
@@ -18,8 +18,7 @@ fi
 
 
 if [ $SYS == 'ubuntu' ];then
-    sudo apt update -y
-    sudo apt install default-jdk -y
+    echo 'ubuntu not install'
 elif [ $SYS == 'centos' ];then
     sudo rpm --install https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-6.2.4.rpm
     sudo systemctl daemon-reload
