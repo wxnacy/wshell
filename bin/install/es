@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+VERSION=6.3.0
+
 OS=${0/%install\/es/system\/check}
 OSS=""
 if [ -f $OS ];then
@@ -25,8 +27,9 @@ fi
 
 if [ $SYS == 'ubuntu' ];then
     echo 'ubuntu not install'
+    sudo dpkg -i https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-${VERSION}.deb
 elif [ $SYS == 'centos' ];then
-    sudo rpm -ivh https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-6.3.0.rpm
+    sudo rpm -ivh https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-${VERSION}.rpm
     sudo systemctl daemon-reload
     sudo systemctl enable elasticsearch.service
     sudo systemctl start elasticsearch.service

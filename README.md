@@ -9,9 +9,16 @@ Wshell 是集成化的 Linux 服务器脚本，主旨是尽量将常用软件的
 
 ## 安装
 
+**安装最新版**
+
 ```bash
-$ curl -L https://raw.githubusercontent.com/wxnacy/wshell/1.0.1/install | bash
+$ curl -L https://raw.githubusercontent.com/wxnacy/wshell/master/install | bash
 ```
+
+<!-- **安装指定版本** -->
+<!-- ```bash -->
+<!-- $ curl -L https://raw.githubusercontent.com/wxnacy/wshell/${tag_name}/install | bash -->
+<!-- ``` -->
 
 **配置环境**
 
