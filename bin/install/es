@@ -20,7 +20,7 @@ fi
 if [ $SYS == 'ubuntu' ];then
     echo 'ubuntu not install'
 elif [ $SYS == 'centos' ];then
-    sudo rpm -ivh https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-6.2.4.rpm
+    sudo rpm -ivh https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-6.3.0.rpm
     sudo systemctl daemon-reload
     sudo systemctl enable elasticsearch.service
     sudo systemctl start elasticsearch.service
