@@ -22,8 +22,8 @@ fi
 if [ $SYS == 'ubuntu' ];then
     echo 'ubuntu not install'
 elif [ $SYS == 'centos' ];then
-    sudo rpm -ivh https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-6.3.0-x86_64.rpm
+    sudo rpm -ivh https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-${VERSION}-x86_64.rpm
     sudo systemctl daemon-reload
-    sudo systemctl enable kibana
-    sudo systemctl start kibana
+    sudo systemctl enable filebeat
+    sudo systemctl start filebeat
 fi
