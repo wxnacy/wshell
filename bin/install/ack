@@ -5,22 +5,19 @@ OSS=(${OS})
 SYS=${OSS[0]}
 VER=${OSS[1]}
 
-
-if [ ${SYS} == 'ubuntu' ]
-then
-
-    sudo apt update -y
-    sudo apt -y install ack-grep
-
-elif [ ${SYS} == 'centos' ]
-then
-
-    sudo yum -y install epel-release
-    sudo yum -y install ack
-
-elif [ ${SYS} == 'Darwin' ]
-then
-
-    brew install ack
-
-fi
+case $SYS in
+    debian|ubuntu|devuan)
+        sudo apt update -y
+        sudo apt -y install ack-grep
+        ;;
+    centos|amzn|fedora|rhel)
+        sudo yum -y install epel-release
+        sudo yum -y install ack
+        ;;
+    Darwin)
+        brew install ack
+        ;;
+    *)
+        echo '暂时不支持该系统'
+        ;;
+esac
