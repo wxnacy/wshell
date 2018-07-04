@@ -31,10 +31,10 @@ check_system(){
                 centos|fedora|rhel)
                     PKG="yum"
                     # SYS="centos"
-                    if test "$(echo "$VERSION_ID >= 22" | bc)" -ne 0;
-                    then
-                        PKG="dnf"
-                    fi
+                    # if test "$(echo "$VERSION_ID >= 22" | bc)" -ne 0;
+                    # then
+                        # PKG="dnf"
+                    # fi
                     ;;
                 *)
                     exit 1
