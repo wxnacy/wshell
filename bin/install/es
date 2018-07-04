@@ -37,6 +37,7 @@ install(){
         check_repo=`yum repolist all | grep elastic`
         check_repo=(${check_repo})
         if [ ! $check_repo ];then
+            echo "Add yum repo"
             sudo rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
             REPO=/etc/yum.repos.d/elastic.repo
             echo "[elasticsearch-6.x]" | sudo tee -a ${REPO}
