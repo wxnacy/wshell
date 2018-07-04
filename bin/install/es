@@ -34,7 +34,8 @@ install(){
         echo "deb https://artifacts.elastic.co/packages/6.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-6.x.list
         sudo apt update && sudo apt install elasticsearch
     elif [ $SYS == 'centos' ];then
-        if [ ! `yum repolist all | grep elastic` ];then
+        check_repo=`yum repolist all | grep elastic`
+        if [ ! $check_repo ];then
             sudo rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
             REPO=/etc/yum.repos.d/elastic.repo
             echo "[elasticsearch-6.x]" | sudo tee -a ${REPO}
