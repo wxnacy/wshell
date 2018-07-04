@@ -55,6 +55,7 @@ $ wshell install java
 - `mysql` 5.7.x
 - `java` OpenJDK 1.8.0
 - `nvm` 0.33.11
+- `es, elasticsearch` Elasticsearch 6.x 最新版
 - `pyenv`
 - `ack`
 - `dig`
@@ -85,3 +86,6 @@ c++, pcre, pcre-devel, openssl, openssl-devel, epel-release, zlib, zlib-devel, r
 
 查看 Wshell 支持软件的安装情况
 
+### os
+
+查看系统版本信息
