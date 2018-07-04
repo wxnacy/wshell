@@ -4,6 +4,7 @@ OS=`curl -L https://raw.githubusercontent.com/wxnacy/wshell/master/bin/base/os |
 OSS=(${OS})
 SYS=${OSS[0]}
 VER=${OSS[1]}
+PKG=${OSS[2]}
 
 PKG=yum
 if [ $SYS == 'ubuntu' ];then
@@ -14,34 +15,34 @@ install(){
     sudo ${PKG} -y update
     sudo ${PKG} -y install gcc g++ make cmake
     sudo ${PKG} -y install git vim wget unzip expect patch
-    if [ ${SYS} == 'ubuntu' ]
-    then
-        sudo ${PKG} -y install htop python-pip
-        sudo apt -y install httpie
-        sudo apt -y install zlib1g.dev libgdbm-dev \
-            libssl-dev libsqlite3-dev libbz2-dev libreadline-dev
-        sudo ${PKG} -y install dnsutils     # dig
-        sudo ${PKG} -y install ack-grep     # ack
 
-    elif [ ${SYS} == 'centos' ]
-    then
-        sudo yum install -y yum-utils
-        sudo ${PKG} -y install c++
-        sudo ${PKG} -y install pcre pcre-devel openssl openssl-devel # nginx
-        sudo ${PKG} -y install epel-release htop # htop need
-        sudo ${PKG} -y install install zlib zlib-devel  # GeoIp need
-        sudo ${PKG} -y install install bind-utils       # dig
+    case $SYS in
+        debian|ubuntu|devuan)
+            sudo ${PKG} -y install htop python-pip
+            sudo apt -y install httpie
+            sudo apt -y install zlib1g.dev libgdbm-dev \
+                libssl-dev libsqlite3-dev libbz2-dev libreadline-dev
+            sudo ${PKG} -y install dnsutils     # dig
+            sudo ${PKG} -y install ack-grep     # ack
+            ;;
+        centos|amzn|fedora|rhel)
+            sudo yum install -y yum-utils
+            sudo ${PKG} -y install c++
+            sudo ${PKG} -y install pcre pcre-devel openssl openssl-devel # nginx
+            sudo ${PKG} -y install epel-release htop # htop need
+            sudo ${PKG} -y install install zlib zlib-devel  # GeoIp need
+            sudo ${PKG} -y install install bind-utils       # dig
 
-        sudo ${PKG} -y install readline readline-devel readline-static \
-            openssl-static sqlite-devel bzip2-devel bzip2-libs
-        # https://beyondgrep.com/install/
-        sudo yum -y install ack htop httpie      # need epel-release
+            sudo ${PKG} -y install readline readline-devel readline-static \
+                openssl-static sqlite-devel bzip2-devel bzip2-libs
+            # https://beyondgrep.com/install/
+            sudo yum -y install ack htop httpie      # need epel-release
+            ;;
+        *)
+            echo '暂时不支持该系统'
+            ;;
+    esac
 
-    elif [ ${SYS} == 'mac' ]
-    then
-        echo ${SYS}
-
-    fi
 }
 
 install
