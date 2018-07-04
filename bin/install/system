@@ -15,7 +15,7 @@ install(){
     sudo ${PKG} -y update
     sudo ${PKG} -y install gcc g++ make cmake
     sudo ${PKG} -y install git vim wget unzip expect patch
-
+    curl -L https://raw.githubusercontent.com/wxnacy/wshell/master/bin/install/ack | bash
     case $SYS in
         debian|ubuntu|devuan)
             sudo ${PKG} -y install htop python-pip
@@ -23,7 +23,6 @@ install(){
             sudo apt -y install zlib1g.dev libgdbm-dev \
                 libssl-dev libsqlite3-dev libbz2-dev libreadline-dev
             sudo ${PKG} -y install dnsutils     # dig
-            sudo ${PKG} -y install ack-grep     # ack
             ;;
         centos|amzn|fedora|rhel)
             sudo yum install -y yum-utils
@@ -36,7 +35,7 @@ install(){
             sudo ${PKG} -y install readline readline-devel readline-static \
                 openssl-static sqlite-devel bzip2-devel bzip2-libs
             # https://beyondgrep.com/install/
-            sudo yum -y install ack htop httpie      # need epel-release
+            sudo yum -y install htop httpie      # need epel-release
             ;;
         *)
             echo '暂时不支持该系统'
