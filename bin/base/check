@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+
+OS=`${0/%check/os}`
+OSS=(${OS})
+SYS=${OSS[0]}
+VER=${OSS[1]}
+
+echo "Your system is: ${OS}"
+notinstall=''
+echo -e '\nInstall:'
+
+for i in  gcc g++ make cmake git vim wget unzip expect openssl c++ ack \
+    htop http dig pyenv python java mysql docker nginx ;do
+    path=`command -v $i`
+    if [ $path ];then
+        echo -e "$i\tinstall on $path"
+    else
+        notinstall="$i $notinstall"
+    fi
+done
+
+
+for i in nvm wvim;do
+    if [ -d $HOME/.$i ];then
+        echo -e "$i \tinstall on $HOME/.$i"
+    else
+        notinstall="$i $notinstall"
+    fi
+done
+
+if [ $SYS == 'centos' ];then
+    path=`command -v yum-config-manager`
+    if [ $path ];then
+        echo -e "yum-utils\tinstall on $path"
+    else
+        notinstall="yum-utils $notinstall"
+    fi
+fi
+
+echo -e '\nNot install:'
+echo -e "\t$notinstall"
+echo 'You can use command:'
+echo -e '\twshell <package> install'
+echo 'To install package. '
