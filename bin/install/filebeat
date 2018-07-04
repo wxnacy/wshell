@@ -15,7 +15,8 @@ SYS=${OSS[0]}
 VER=${OSS[1]}
 
 if [ ! `command -v java` ];then
-    `${0/%install\/es/java\/install}`
+    echo 'Now install java'
+    curl -L https://raw.githubusercontent.com/wxnacy/wshell/master/bin/java/install | bash
 fi
 
 
@@ -23,7 +24,8 @@ if [ $SYS == 'ubuntu' ];then
     echo 'ubuntu not install'
 elif [ $SYS == 'centos' ];then
     sudo rpm -ivh https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-${VERSION}-x86_64.rpm
-    sudo systemctl daemon-reload
-    sudo systemctl enable filebeat
-    sudo systemctl start filebeat
 fi
+
+sudo systemctl daemon-reload
+sudo systemctl enable filebeat
+sudo systemctl start filebeat
