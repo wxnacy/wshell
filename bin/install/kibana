@@ -2,13 +2,13 @@
 
 VERSION=6.3.0
 
-OS=${0/%install\/es/system\/check}
+OS=${0/%install\/kibana/base\/os}
 OSS=""
 if [ -f $OS ];then
     TMP=`${OS}`
     OSS=($TMP)
 else
-    OS=`curl -L https://raw.githubusercontent.com/wxnacy/wshell/master/bin/system/check | bash`
+    OS=`curl -L https://raw.githubusercontent.com/wxnacy/wshell/master/bin/base/os | bash`
     OSS=(${OS})
 fi
 SYS=${OSS[0]}
@@ -16,18 +16,7 @@ VER=${OSS[1]}
 
 echo "Your system is `${OS}`"
 
-if [ ! `command -v java` ];then
-    echo 'Now install java'
-    curl -L https://raw.githubusercontent.com/wxnacy/wshell/master/bin/java/install | bash
-    # IJ=${0/%install\/es/java\/install}
-    # if [ -f $IJ ];then
-        # echo `${IJ}`
-    # else
-        # curl -L https://raw.githubusercontent.com/wxnacy/wshell/master/bin/java/install | bash
-    # fi
-
-fi
-
+curl -L https://raw.githubusercontent.com/wxnacy/wshell/master/bin/install/es | bash
 install(){
     echo 'Now install Kibana'
 
