@@ -14,16 +14,50 @@ fi
 SYS=${OSS[0]}
 VER=${OSS[1]}
 
+echo "Your system is `${OS}`"
+
 if [ ! `command -v java` ];then
-    `${0/%install\/es/java\/install}`
+    echo 'Now install java'
+    curl -L https://raw.githubusercontent.com/wxnacy/wshell/master/bin/java/install | bash
+    # IJ=${0/%install\/es/java\/install}
+    # if [ -f $IJ ];then
+        # echo `${IJ}`
+    # else
+        # curl -L https://raw.githubusercontent.com/wxnacy/wshell/master/bin/java/install | bash
+    # fi
+
 fi
 
+install(){
+    echo 'Now install Kibana'
+    if [ $SYS == 'ubuntu' ];then
+        wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
+        sudo apt-get install apt-transport-https
+        echo "deb https://artifacts.elastic.co/packages/6.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-6.x.list
+        sudo apt update && sudo apt install elasticsearch
+    elif [ $SYS == 'centos' ];then
+        check_repo=`yum repolist all | grep kibana`
+        check_repo=(${check_repo})
+        if [ ! $check_repo ];then
+            echo "Add yum repo"
+            sudo rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
+            REPO=/etc/yum.repos.d/kibana.repo
+            echo "[kibana-6.x]" | sudo tee -a ${REPO}
+            echo "name=Kibana repository for 6.x packages" | sudo tee -a ${REPO}
+            echo "baseurl=https://artifacts.elastic.co/packages/6.x/yum" | sudo tee -a ${REPO}
+            echo "gpgcheck=1" | sudo tee -a ${REPO}
+            echo "gpgkey=https://artifacts.elastic.co/GPG-KEY-elasticsearch" | sudo tee -a ${REPO}
+            echo "enabled=1" | sudo tee -a ${REPO}
+            echo "autorefresh=1" | sudo tee -a ${REPO}
+            echo "type=rpm-md" | sudo tee -a ${REPO}
+        fi
+        sudo yum install -y kibana
 
-if [ $SYS == 'ubuntu' ];then
-    echo 'ubuntu not install'
-elif [ $SYS == 'centos' ];then
-    sudo rpm -ivh https://artifacts.elastic.co/downloads/kibana/kibana-${VERSION}-x86_64.rpm
+    fi
+
     sudo systemctl daemon-reload
     sudo systemctl enable kibana
     sudo systemctl start kibana
-fi
+}
+
+install
