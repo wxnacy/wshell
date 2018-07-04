@@ -6,19 +6,13 @@ OS=`curl -L https://raw.githubusercontent.com/wxnacy/wshell/master/bin/base/os |
 OSS=(${OS})
 SYS=${OSS[0]}
 VER=${OSS[1]}
+PKG=${OSS[2]}
 
-if [ ! `command -v java` ];then
-    echo 'Now install java'
-    curl -L https://raw.githubusercontent.com/wxnacy/wshell/master/bin/java/install | bash
-fi
+echo "Your system is ${OS}"
 
+curl -L https://raw.githubusercontent.com/wxnacy/wshell/master/bin/install/es | bash
 
-if [ $SYS == 'ubuntu' ];then
-    echo 'ubuntu not install'
-elif [ $SYS == 'centos' ];then
-    sudo rpm -ivh https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-${VERSION}-x86_64.rpm
-fi
-
+sudo $PKG install -y filebeat
 sudo systemctl daemon-reload
 sudo systemctl enable filebeat
 sudo systemctl start filebeat

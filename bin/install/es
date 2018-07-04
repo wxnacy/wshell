@@ -7,17 +7,11 @@ OSS=(${OS})
 SYS=${OSS[0]}
 VER=${OSS[1]}
 
-echo "Your system is `${OS}`"
+echo "Your system is ${OS}"
 
 if [ ! `command -v java` ];then
     echo 'Now install java'
     curl -L https://raw.githubusercontent.com/wxnacy/wshell/master/bin/java/install | bash
-    # IJ=${0/%install\/es/java\/install}
-    # if [ -f $IJ ];then
-        # echo `${IJ}`
-    # else
-        # curl -L https://raw.githubusercontent.com/wxnacy/wshell/master/bin/java/install | bash
-    # fi
 
 fi
 

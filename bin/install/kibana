@@ -7,26 +7,28 @@ OS=`curl -L https://raw.githubusercontent.com/wxnacy/wshell/master/bin/base/os |
 OSS=(${OS})
 SYS=${OSS[0]}
 VER=${OSS[1]}
+PKG=${OSS[2]}
 
-echo "Your system is `${OS}`"
+echo "Your system is ${OS}"
 
 curl -L https://raw.githubusercontent.com/wxnacy/wshell/master/bin/install/es | bash
+
 install(){
     echo 'Now install Kibana'
 
-    if [ $SYS == 'ubuntu' ];then
-        if [ ! `command -v wget` ];then
-            sudo apt update -y && sudo apt install -y wget
-        fi
-        name=kibana-${VERSION}-amd64.deb
-        wget https://artifacts.elastic.co/downloads/kibana/$name
-        sudo dpkg -i $name
-        rm $name
-    elif [ $SYS == 'centos' ];then
-        sudo rpm -ivh https://artifacts.elastic.co/downloads/kibana/kibana-${VERSION}-x86_64.rpm
+    # if [ $SYS == 'ubuntu' ];then
+        # if [ ! `command -v wget` ];then
+            # sudo apt update -y && sudo apt install -y wget
+        # fi
+        # name=kibana-${VERSION}-amd64.deb
+        # wget https://artifacts.elastic.co/downloads/kibana/$name
+        # sudo dpkg -i $name
+        # rm $name
+    # elif [ $SYS == 'centos' ];then
+        # sudo rpm -ivh https://artifacts.elastic.co/downloads/kibana/kibana-${VERSION}-x86_64.rpm
+    # fi
 
-    fi
-
+    sudo $PKG install -y kibana
     sudo systemctl daemon-reload
     sudo systemctl enable kibana
     sudo systemctl start kibana
