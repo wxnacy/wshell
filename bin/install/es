@@ -14,7 +14,7 @@ fi
 SYS=${OSS[0]}
 VER=${OSS[1]}
 
-echo "Your system is ${OS}"
+echo "Your system is `${OS}`"
 
 if [ ! `command -v java` ];then
     echo 'Now install java'
