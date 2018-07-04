@@ -28,7 +28,7 @@ check_system(){
                     PKG='apt'
                     # SYS='ubuntu'
                     ;;
-                centos|fedora|rhel)
+                centos|amzn|fedora|rhel)
                     PKG="yum"
                     # SYS="centos"
                     # if test "$(echo "$VERSION_ID >= 22" | bc)" -ne 0;
@@ -37,7 +37,7 @@ check_system(){
                     # fi
                     ;;
                 *)
-                    exit 1
+                    PKG='yum'
                     ;;
             esac
 
