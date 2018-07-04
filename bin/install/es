@@ -14,7 +14,10 @@ fi
 SYS=${OSS[0]}
 VER=${OSS[1]}
 
+echo 'Your system is ${OS}'
+
 if [ ! `command -v java` ];then
+    echo 'Now install java'
     IJ=${0/%install\/es/java\/install}
     if [ -f $IJ ];then
         `${IJ}`
