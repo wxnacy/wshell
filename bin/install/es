@@ -31,8 +31,20 @@ if [ $SYS == 'ubuntu' ];then
     echo "deb https://artifacts.elastic.co/packages/6.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-6.x.list
     sudo apt update && sudo apt install elasticsearch
 elif [ $SYS == 'centos' ];then
-    sudo rpm -ivh https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-${VERSION}.rpm
-    sudo systemctl daemon-reload
-    sudo systemctl enable elasticsearch.service
-    sudo systemctl start elasticsearch.service
+    sudo rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
+    REPO=/etc/yum.repos.d/elastic.repo
+    echo "[elasticsearch-6.x]" | sudo tee -a ${REPO}
+    echo "name=Elasticsearch repository for 6.x packages" | sudo tee -a ${REPO}
+    echo "baseurl=https://artifacts.elastic.co/packages/6.x/yum" | sudo tee -a ${REPO}
+    echo "gpgcheck=1" | sudo tee -a ${REPO}
+    echo "gpgkey=https://artifacts.elastic.co/GPG-KEY-elasticsearch" | sudo tee -a ${REPO}
+    echo "enabled=1" | sudo tee -a ${REPO}
+    echo "autorefresh=1" | sudo tee -a ${REPO}
+    echo "type=rpm-md" | sudo tee -a ${REPO}
+    sudo yum install -y elasticsearch
+
 fi
+
+sudo systemctl daemon-reload
+sudo systemctl enable elasticsearch.service
+sudo systemctl start elasticsearch.service
