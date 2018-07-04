@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
-SYS=''
-VER=''
+SYS='x'
+VER='x'
+PKG='x'
 
 HAS_RELEASE=`test -f /etc/os-release && echo 'yes'`
 
@@ -13,6 +14,7 @@ check_system(){
         INFO=`sw_vers`
         ARR=(${INFO})
         VER=${ARR[5]}
+        PKG=brew
     elif [ ${OS} == "Linux"  ];then
 
         if [ ${HAS_RELEASE} ]
@@ -21,23 +23,23 @@ check_system(){
             SYS=$ID
             VER=$VERSION_ID
 
-            # case $ID in
-                # debian|ubuntu|devuan)
-                    # PKG='apt'
+            case $ID in
+                debian|ubuntu|devuan)
+                    PKG='apt'
                     # SYS='ubuntu'
-                    # ;;
-                # centos|fedora|rhel)
-                    # PKG="yum"
+                    ;;
+                centos|fedora|rhel)
+                    PKG="yum"
                     # SYS="centos"
-                    # # if test "$(echo "$VERSION_ID >= 22" | bc)" -ne 0;
-                    # # then
-                        # # PKG="dnf"
-                    # # fi
-                    # ;;
-                # *)
-                    # exit 1
-                    # ;;
-            # esac
+                    if test "$(echo "$VERSION_ID >= 22" | bc)" -ne 0;
+                    then
+                        PKG="dnf"
+                    fi
+                    ;;
+                *)
+                    exit 1
+                    ;;
+            esac
 
         else
             ISSUE=`cat /etc/issue`
@@ -45,6 +47,7 @@ check_system(){
             then
                 SYS='centos'
                 VER=6
+                PKG=yum
             fi
 
         fi
@@ -53,7 +56,7 @@ check_system(){
         echo "Other OS: ${OS}"
     fi
 
-    echo "${SYS} ${VER}"
+    echo "${SYS} ${VER} ${PKG}"
 }
 
 check_system

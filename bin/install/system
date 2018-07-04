@@ -45,7 +45,6 @@ install(){
         # https://beyondgrep.com/install/
         sudo yum -y install ack htop httpie      # need epel-release
 
-
     elif [ ${SYS} == 'mac' ]
     then
         echo ${SYS}
