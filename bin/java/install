@@ -1,16 +1,10 @@
 #!/usr/bin/env bash
 
-OS=${0/%java\/install/base\/os}
-OSS=""
-if [ -f $OS ];then
-    TMP=`${OS}`
-    OSS=($TMP)
-else
-    OS=`curl -L https://raw.githubusercontent.com/wxnacy/wshell/master/bin/base/os | bash`
-    OSS=(${OS})
-fi
+OS=`curl -L https://raw.githubusercontent.com/wxnacy/wshell/master/bin/base/os | bash`
+OSS=(${OS})
 SYS=${OSS[0]}
 VER=${OSS[1]}
+PKG=${OSS[2]}
 
 if [ $SYS == 'ubuntu' ];then
     sudo apt update -y

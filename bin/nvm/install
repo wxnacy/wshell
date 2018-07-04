@@ -1,34 +1,10 @@
 #!/usr/bin/env bash
 
-OS=${0/%install/check}
-OSS=""
-if [ -f $OS ];then
-    TMP=`${OS}`
-    OSS=($TMP)
-else
-    OS=`curl -L https://raw.githubusercontent.com/wxnacy/wshell/master/bin/system/check_system.sh | bash`
-    OSS=(${OS})
-fi
+OS=`curl -L https://raw.githubusercontent.com/wxnacy/wshell/master/bin/base/os | bash`
+OSS=(${OS})
 SYS=${OSS[0]}
 VER=${OSS[1]}
-
-
-# if [ ${SYS} == 'ubuntu' ]
-# then
-
-    # curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
-
-# elif [ ${SYS} == 'centos' ]
-# then
-
-    # curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
-
-# elif [ ${SYS} == 'Darwin' ]
-# then
-
-    # echo 'mac'
-
-# fi
+PKG=${OSS[2]}
 
 BP=~/.bash_profile
 if [ -f ~/.profile ];then
