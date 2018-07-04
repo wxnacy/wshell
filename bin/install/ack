@@ -10,7 +10,7 @@ case $SYS in
         sudo apt update -y
         sudo apt -y install ack-grep
         ;;
-    centos|amzn|fedora|rhel)
+    centos|fedora|rhel)
         sudo yum -y install epel-release
         sudo yum -y install ack
         ;;
