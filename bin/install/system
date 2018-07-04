@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 
-OS=${0/%install/check}
+OS=${0/%install\/system/base\/os}
 OSS=""
 if [ -f $OS ];then
     TMP=`${OS}`
     OSS=($TMP)
 else
-    OS=`curl -L https://raw.githubusercontent.com/wxnacy/wshell/master/bin/system/check_system.sh | bash`
+    OS=`curl -L https://raw.githubusercontent.com/wxnacy/wshell/master/bin/base/os | bash`
     OSS=(${OS})
 fi
 SYS=${OSS[0]}
