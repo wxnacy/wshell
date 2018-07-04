@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-OS=${0/%install\/ack/system\/check}
+OS=${0/%install\/http/system\/check}
 OSS=""
 if [ -f $OS ];then
     TMP=`${OS}`
