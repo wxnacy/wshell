@@ -6,10 +6,16 @@ SYS=${OSS[0]}
 VER=${OSS[1]}
 PKG=${OSS[2]}
 
-if [ $SYS == 'ubuntu' ];then
-    sudo apt update -y
-    sudo apt install default-jdk -y
-elif [ $SYS == 'centos' ];then
-    sudo yum update -y
-    sudo yum install -y java-1.8.0-openjdk-devel
-fi
+case $SYS in
+    debian|ubuntu|devuan)
+        sudo apt update -y
+        sudo apt install default-jdk -y
+        ;;
+    centos|amzn|fedora|rhel)
+        sudo yum update -y
+        sudo yum install -y java-1.8.0-openjdk-devel
+        ;;
+    *)
+        echo '暂时不支持该系统'
+        ;;
+esac

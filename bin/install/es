@@ -47,6 +47,7 @@ install_ubuntu(){
 
 install(){
     echo 'Now install elasticsearch'
+
     case $SYS in
         debian|ubuntu|devuan)
             install_ubuntu
