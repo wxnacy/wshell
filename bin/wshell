@@ -5,7 +5,7 @@ VERSION=1.1.1
 CMD=$1
 ARGS=($@)
 
-OS=`${0/%wshell/system\/check}`
+OS=`${0/%wshell/base\/os}`
 OSS=(${OS})
 SYS=${OSS[0]}
 VER=${OSS[1]}
