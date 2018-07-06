@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+VERSION=6.3.0
+
+OS=`curl -L https://raw.githubusercontent.com/wxnacy/wshell/master/bin/base/os | bash`
+OSS=(${OS})
+SYS=${OSS[0]}
+VER=${OSS[1]}
+PKG=${OSS[2]}
+
+echo "Your system is `${OS}`"
+curl -L https://raw.githubusercontent.com/wxnacy/wshell/master/bin/install/es | bash
+
+sudo $PKG install -y kibana logstash filebeat
+sudo systemctl daemon-reload
+sudo systemctl enable kibana filebeat logstash
+sudo systemctl start kibana filebeat logstash

@@ -15,7 +15,7 @@ case $SYS in
         sudo yum -y install ack
         ;;
     amzn)
-        curl https://beyondgrep.com/ack-2.24-single-file > ~/bin/ack && chmod 0755 ~/bin/ack
+        sudo sh -c "curl https://beyondgrep.com/ack-2.24-single-file > /usr/local/bin/ack && chmod 0755 /usr/local/bin/ack"
         ;;
     Darwin)
         brew install ack

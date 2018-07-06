@@ -12,14 +12,11 @@ if [ $SYS == 'ubuntu' ];then
 elif [ $SYS == 'centos' ];then
     if [ ! `command -v mysql` ];then
         pkg=mysql80-community-release-el7-1.noarch.rpm
-        # sudo yum install -y wget
-        # test -f $pkg || wget https://dev.mysql.com/get/$pkg
         sudo rpm -ivh https://dev.mysql.com/get/$pkg
         sudo yum install -y yum-utils
         sudo yum-config-manager --disable mysql80-community
         sudo yum-config-manager --enable mysql57-community
         sudo yum update -y
-        # sudo yum install -y mysql-server
         sudo yum install -y mysql-community-server
         sudo systemctl start mysqld
         # rm $pkg
@@ -31,6 +28,5 @@ elif [ $SYS == 'centos' ];then
     ps=(${pass})
     echo "Mysql password is: ${ps[-1]}"
 elif [ $SYS == 'mac' ];then
-    2018-06-27T09:46:58.084829Z 5 [Note] [MY-010454] [Server] A temporary password is generated for root@localhost: jSl2sq#MGyQD
-
+    brew install mysql
 fi
