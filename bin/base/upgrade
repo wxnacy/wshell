@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+OS=`curl -L https://raw.githubusercontent.com/wxnacy/wshell/master/bin/base/os | bash`
+OSS=(${OS})
+SYS=${OSS[0]}
+VER=${OSS[1]}
+PKG=${OSS[2]}
+
+sudo $PKG upgrade -y
