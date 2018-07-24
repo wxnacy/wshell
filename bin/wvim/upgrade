@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+NPWD=${PWD}
+cd ${HOME}/.wvim
+git pull
+cd ${NPWD}
