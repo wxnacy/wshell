@@ -1,17 +1,24 @@
 #!/usr/bin/env bash
 
-VERSION=6.3.0
-
 OS=`curl -L https://raw.githubusercontent.com/wxnacy/wshell/master/bin/base/os | bash`
 OSS=(${OS})
 SYS=${OSS[0]}
 VER=${OSS[1]}
 PKG=${OSS[2]}
 
-echo "Your system is `${OS}`"
-curl -L https://raw.githubusercontent.com/wxnacy/wshell/master/bin/install/es | bash
-
-sudo $PKG install -y kibana filebeat
-sudo systemctl daemon-reload
-sudo systemctl enable kibana filebeat
-sudo systemctl start kibana filebeat
+case $SYS in
+    debian|ubuntu|devuan)
+        sudo apt update -y
+        sudo apt -y install vagrant
+        ;;
+    centos|fedora|rhel)
+        sudo yum -y install https://releases.hashicorp.com/vagrant/2.1.2/vagrant_2.1.2_x86_64.rpm
+        ;;
+    Darwin)
+        brew cask install virtualbox
+        brew cask install vagrant
+        ;;
+    *)
+        echo '暂时不支持该系统'
+        ;;
+esac
