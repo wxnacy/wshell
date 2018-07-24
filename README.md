@@ -11,8 +11,16 @@ Wshell 是集成化的 Linux 服务器脚本，主旨是尽量将常用软件的
 
 **安装最新版**
 
+curl
+
 ```bash
 $ curl -L https://raw.githubusercontent.com/wxnacy/wshell/master/install | bash
+```
+
+wget
+
+```bash
+$ wget -qO- https://raw.githubusercontent.com/wxnacy/wshell/master/install | bash
 ```
 
 <!-- **安装指定版本** -->

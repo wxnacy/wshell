@@ -30,5 +30,6 @@ alias docker="sudo docker"
 alias vg="vagrant"
 alias vgreup="vagrant destroy -f && vagrant up"
 alias vgd="vagrant destroy -f"
+alias vgssh="vagrant up && vgrant ssh"
 
 # export WSHELL="${HOME}/.wshell"
