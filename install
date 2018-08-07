@@ -1,21 +1,25 @@
 #!/usr/bin/env bash
 
+case $SYS in
+    debian|ubuntu|devuan)
+        sudo apt -y install curl git
+        ;;
+    centos|fedora|rhel|amzn)
+        sudo yum -y install curl git
+        ;;
+    Darwin)
+        brew install curl git
+        ;;
+    *)
+        echo '暂时不支持该系统'
+        ;;
+esac
+
 OS=`curl -L https://raw.githubusercontent.com/wxnacy/wshell/master/bin/base/os | bash`
 OSS=(${OS})
 SYS=${OSS[0]}
 VER=${OSS[1]}
 
-
-if [ ! `command -v git` ];then
-    if [ ${SYS} == 'centos' ]
-    then
-        sudo yum -y install git
-    elif [ ${SYS} == 'ubuntu' ]
-    then
-        sudo apt update -y
-        sudo apt -y install git
-    fi
-fi
 
 WSHELL_HOME=${HOME}/.wshell
 
