@@ -6,24 +6,22 @@ SYS=${OSS[0]}
 VER=${OSS[1]}
 PKG=${OSS[2]}
 
-if [ ${SYS} == 'ubuntu' ]
-then
-
-    sudo apt update -y
-    sudo apt -y install git gcc make patch zlib1g.dev libgdbm-dev libssl-dev libsqlite3-dev libbz2-dev libreadline-dev
-
-elif [ ${SYS} == 'centos' ]
-then
-
-    sudo yum update -y
-    sudo yum -y install git gcc readline readline-devel readline-static openssl openssl-devel openssl-static sqlite-devel bzip2-devel bzip2-libs
-
-elif [ ${SYS} == 'Darwin' ]
-then
-
-    echo 'mac'
-
-fi
+case $SYS in
+    debian|ubuntu|devuan)
+        sudo apt update -y
+        sudo apt -y install git gcc make patch zlib1g.dev libgdbm-dev libssl-dev libsqlite3-dev libbz2-dev libreadline-dev
+        ;;
+    centos|fedora|rhel|amzn)
+        sudo yum update -y
+        sudo yum -y install git gcc readline readline-devel readline-static openssl openssl-devel openssl-static sqlite-devel bzip2-devel bzip2-libs
+        ;;
+    Darwin)
+        echo '暂时不支持该系统'
+        ;;
+    *)
+        echo '暂时不支持该系统'
+        ;;
+esac
 
 BP=~/.bash_profile
 if [ -f ~/.profile ];then
