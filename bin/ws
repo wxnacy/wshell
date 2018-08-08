@@ -1,3 +1,5 @@
 #!/usr/bin/env bash
 
-`${0/%ws/wshell}`
+OS="${0/%ws/wshell}"
+$OS $@
+
