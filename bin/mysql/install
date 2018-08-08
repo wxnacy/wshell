@@ -6,27 +6,35 @@ SYS=${OSS[0]}
 VER=${OSS[1]}
 PKG=${OSS[2]}
 
-if [ $SYS == 'ubuntu' ];then
-    sudo apt update -y
-    sudo apt install -y mysql-server
-elif [ $SYS == 'centos' ];then
-    if [ ! `command -v mysql` ];then
-        pkg=mysql80-community-release-el7-1.noarch.rpm
-        sudo rpm -ivh https://dev.mysql.com/get/$pkg
-        sudo yum install -y yum-utils
-        sudo yum-config-manager --disable mysql80-community
-        sudo yum-config-manager --enable mysql57-community
-        sudo yum update -y
-        sudo yum install -y mysql-community-server
-        sudo systemctl start mysqld
-        # rm $pkg
-    else
-        echo 'Mysql is installed'
-    fi
+case $SYS in
+    debian|ubuntu|devuan)
+        sudo apt update -y
+        sudo apt install -y mysql-server
+        ;;
+    centos|fedora|rhel|amzn)
+        if [ ! `command -v mysql` ];then
+            pkg=mysql80-community-release-el7-1.noarch.rpm
+            sudo rpm -ivh https://dev.mysql.com/get/$pkg
+            sudo yum install -y yum-utils
+            sudo yum-config-manager --disable mysql80-community
+            sudo yum-config-manager --enable mysql57-community
+            sudo yum update -y
+            sudo yum install -y mysql-community-server
+            sudo systemctl start mysqld
+            # rm $pkg
+        else
+            echo 'Mysql is installed'
+        fi
 
-    pass=`sudo grep 'temporary password' /var/log/mysqld.log`
-    ps=(${pass})
-    echo "Mysql password is: ${ps[-1]}"
-elif [ $SYS == 'mac' ];then
-    brew install mysql
-fi
+        pass=`sudo grep 'temporary password' /var/log/mysqld.log`
+        ps=(${pass})
+        echo "Mysql password is: ${ps[-1]}"
+        ;;
+    Darwin)
+        brew install mysql
+        ;;
+    *)
+        echo '暂时不支持该系统'
+        ;;
+esac
+
