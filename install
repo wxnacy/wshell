@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 
+
+OS=`curl -L https://raw.githubusercontent.com/wxnacy/wshell/master/bin/base/os | bash`
+OSS=(${OS})
+SYS=${OSS[0]}
+VER=${OSS[1]}
+
 case $SYS in
     debian|ubuntu|devuan)
         sudo apt -y install curl git
@@ -14,12 +20,6 @@ case $SYS in
         echo '暂时不支持该系统'
         ;;
 esac
-
-OS=`curl -L https://raw.githubusercontent.com/wxnacy/wshell/master/bin/base/os | bash`
-OSS=(${OS})
-SYS=${OSS[0]}
-VER=${OSS[1]}
-
 
 WSHELL_HOME=${HOME}/.wshell
 
