@@ -4,12 +4,19 @@ Wshell 是集成化的 Linux 服务器脚本，主旨是尽量将常用软件的
 
 **适配**
 - Ubuntu
+- Debian
 - CentOS
 
 
 ## 安装
 
 **安装最新版**
+
+安装前需要确保系统中已经安装 `curl, git`
+
+```bash
+$ sudo apt/yum install -y curl git
+```
 
 curl
 
