@@ -21,6 +21,11 @@ install(){
         fi
     fi
 
+    if [ ${SYS} == 'debian' ]
+    then
+        install_ubuntu1604
+    fi
+
     if [ $SYS == 'centos' ]
     then
         if [ $VER == '7' ];then
