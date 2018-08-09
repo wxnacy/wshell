@@ -56,7 +56,7 @@ check_system(){
         echo "Other OS: ${OS}"
     fi
 
-    echo "${SYS} ${VER} ${PKG}"
+    echo "${SYS} ${VER} ${PKG} $(lsb_release -sc)"
 }
 
 check_system
