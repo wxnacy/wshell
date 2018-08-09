@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-
+# http://openresty.org/cn/linux-packages.html
 OS=`curl -L https://raw.githubusercontent.com/wxnacy/wshell/master/bin/base/os | bash`
 OSS=(${OS})
 SYS=${OSS[0]}
