@@ -56,7 +56,13 @@ check_system(){
         echo "Other OS: ${OS}"
     fi
 
-    echo "${SYS} ${VER} ${PKG} $(lsb_release -sc)"
+    if [ ${SYS} == "Darwin" ]
+    then
+        echo "${SYS} ${VER} ${PKG} "
+    else
+        echo "${SYS} ${VER} ${PKG} $(lsb_release -sc)"
+
+    fi
 }
 
 check_system

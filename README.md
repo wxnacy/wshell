@@ -72,11 +72,13 @@ $ wshell install java
 - `nvm` 0.33.11
 - `es, elasticsearch` Elasticsearch 6.x 最新版
 - `pyenv`
+- `docker`
 - `ack`
 - `dig`
 - `htop`
 - `http` httpie
 - `wvim`
+- `wcrypto`
 - `system`
 
 **system**

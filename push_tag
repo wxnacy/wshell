@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 
-TAG_NAME=$1
-PUSH_MSG=${@/$1/}
+# TAG_NAME=$1
+# PUSH_MSG=${@/$1/}
+TAG_NAME=`ws -v`
+PUSH_MSG=${@}
 
 main(){
     git pull origin master
