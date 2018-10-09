@@ -6,7 +6,7 @@ SYS=${OSS[0]}
 VER=${OSS[1]}
 
 case $SYS in
-    debian|ubuntu|devuan)
+    debian|ubuntu|devuan|deepin)
         sudo apt update -y
         sudo apt -y install ack-grep
         ;;
