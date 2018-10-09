@@ -24,7 +24,7 @@ check_system(){
             VER=$VERSION_ID
 
             case $ID in
-                debian|ubuntu|devuan)
+                debian|ubuntu|devuan|deepin)
                     PKG='apt'
                     # SYS='ubuntu'
                     ;;
