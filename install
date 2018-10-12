@@ -1,25 +1,12 @@
 #!/usr/bin/env bash
 
-
-OS=`curl -L https://raw.githubusercontent.com/wxnacy/wshell/master/bin/base/os | bash`
-OSS=(${OS})
-SYS=${OSS[0]}
-VER=${OSS[1]}
-
-case $SYS in
-    debian|ubuntu|devuan)
-        sudo apt -y install curl git
-        ;;
-    centos|fedora|rhel|amzn)
-        sudo yum -y install curl git
-        ;;
-    Darwin)
-        brew install curl git
-        ;;
-    *)
-        echo '暂时不支持该系统'
-        ;;
-esac
+for i in git curl;do
+    if [ ! `command -v git` ];then
+        echo 'Install Wshell failed'
+        echo 'Wshell need git'
+        exit 0
+    fi
+done
 
 WSHELL_HOME=${HOME}/.wshell
 

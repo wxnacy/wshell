@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 WSHELL_HOME=${HOME}/.wshell
-VERSION=1.2.2
+VERSION=1.2.3
 CMD=$1
 ARGS=($@)
 
