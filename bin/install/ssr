@@ -2,7 +2,7 @@
 
 spawn sh -c "sudo yum -y install wget"
 spawn sh -c "wget -N --no-check-certificate https://raw.githubusercontent.com/ToyoDAdoubi/doubi/master/ssr.sh && chmod +x ssr.sh && sudo ./ssr.sh"
-expect "*请输入数字 [1-15]：*"
+expect "*[1-15]*"
 # 安装
 send "1\r"
 expect "(默认: 2333):"
