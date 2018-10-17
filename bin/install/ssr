@@ -25,3 +25,6 @@ expect "(默认: 无限):"
 send "\r"
 expect "*y*N*"
 send "y\r"
+expect "*y*N*"
+send "y\r"
+interact
