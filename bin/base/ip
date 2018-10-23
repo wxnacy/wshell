@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+OS=`curl -L https://raw.githubusercontent.com/wxnacy/wshell/master/bin/base/os | bash`
+OSS=(${OS})
+SYS=${OSS[0]}
+VER=${OSS[1]}
+PKG=${OSS[2]}
+
+case $SYS in
+    debian|ubuntu|devuan|deepin)
+        ifconfig eth0 | grep inet | grep -v inet6 | awk '{print $2}' | awk -v FS=":" '{print $2}'
+        ;;
+    centos|fedora|rhel|amzn)
+        ifconfig eth0 | grep inet | grep -v inet6 | awk '{print $2}'
+        ;;
+    Darwin)
+        ifconfig en0 | grep inet | grep -v inet6 | awk '{print $2}'
+        ;;
+    *)
+        echo '暂时不支持该系统'
+        ;;
+esac
