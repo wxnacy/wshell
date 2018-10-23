@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 
-OS=`curl -L https://raw.githubusercontent.com/wxnacy/wshell/master/bin/base/os | bash`
+OS=`ws os`
 OSS=(${OS})
 SYS=${OSS[0]}
 VER=${OSS[1]}
 PKG=${OSS[2]}
 
 case $SYS in
-    debian|ubuntu|devuan|deepin)
+    debian|ubuntu|devuan|deepin|amzn)
         ifconfig eth0 | grep inet | grep -v inet6 | awk '{print $2}' | awk -v FS=":" '{print $2}'
         ;;
-    centos|fedora|rhel|amzn)
+    centos|fedora|rhel)
         ifconfig eth0 | grep inet | grep -v inet6 | awk '{print $2}'
         ;;
     Darwin)
