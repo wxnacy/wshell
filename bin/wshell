@@ -49,8 +49,9 @@ other(){
         $SH ${2}
     else
         SH=${0/%wshell/${1}/${2}}
+        # SH=$WSPATH/bin/$1/$2
         if [ -f $SH ];then
-            $SH
+            $SH $3
         else
             help
         fi
