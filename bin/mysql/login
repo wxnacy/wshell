@@ -8,6 +8,7 @@ if { $conf_name == "" } {
 }
 
 set conf $conf_dir/$conf_name
+puts $conf
 
 if { [file exists $conf] == 0 } {
     puts "Usage: wshell mysql login <configure_path>"
@@ -20,12 +21,12 @@ if { [file exists $conf] == 0 } {
 
 source $conf
 
-if { [info exists port] == 0 } {
-    set port 3306
-}
-if { [info exists host] == 0 } {
-    set host localhost
-}
+# if { [info exists port] == 0 } {
+    # set port 3306
+# }
+# if { [info exists host] == 0 } {
+    # set host localhost
+# }
 if { [info exists log_dir] } {
     if { [file isdirectory ${log_dir}] == 0 } {
         puts "Directory '${log_dir}' does not exist"
@@ -43,5 +44,5 @@ send "${password}\r"
 if { [info exists db] } {
     send "use ${db};\r"
 }
-# send "exit;\r"
+send "exit;\r"
 interact
