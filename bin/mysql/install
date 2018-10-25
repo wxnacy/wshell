@@ -7,7 +7,7 @@ VER=${OSS[1]}
 PKG=${OSS[2]}
 
 case $SYS in
-    debian|ubuntu|devuan)
+    debian|ubuntu|devuan|deepin)
         sudo apt update -y
         sudo apt install -y mysql-server
         ;;
