@@ -1,13 +1,13 @@
 #!/usr/bin/env expect
 
+set conf_name [lindex $argv 0]
 set conf_dir $env(WSPATH)/mysql.conf
-set conf [lindex $argv 0]
 
-if { $conf == "" } {
-    set conf "local"
+if { $conf_name == "" } {
+    set conf_name "local"
 }
 
-set conf $conf_dir/$conf.exp
+set conf $conf_dir/$conf_name
 
 if { [file exists $conf] == 0 } {
     puts "Usage: wshell mysql login <configure_path>"
@@ -31,7 +31,7 @@ if { [info exists log_dir] } {
         puts "Directory '${log_dir}' does not exist"
         exit
     }
-    set log --tee=${log_dir}/mysql.[clock scan 1997].log
+    set log --tee=${log_dir}/$conf_name.[clock scan 1997].log
 } else {
     set log ""
 }

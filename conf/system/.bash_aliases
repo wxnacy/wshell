@@ -4,7 +4,7 @@ alias gst="git status"
 
 # for system
 alias ll="ls -l"
-alias la="ls -a"
+alias la="ls -la"
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."

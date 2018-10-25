@@ -2,15 +2,15 @@
 
 WSPATH=`ws env path`
 DIR=$WSPATH/mysql.conf
-DNAME="local.exp"
+DNAME="local"
 
-echo "create *.exp file for Mysql command"
+echo "create expect conf file for Mysql command"
 echo ""
 
-read -p "name(local.exp): " name
+read -p "name(local): " name
 if [ ! $name ];
 then
-    name="local.exp"
+    name=$DNAME
 fi
 read -p "user(root): " user
 
@@ -57,7 +57,7 @@ set db $db
 set log_dir $log_dir" > $DIR/$name
 
 echo ""
-echo "Create *.exp file on $DIR/$DNAME"
+echo "Create expect conf file on $DIR/$DNAME"
 echo ""
 echo "  log dir on $DIR/logs"
 
