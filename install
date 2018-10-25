@@ -22,6 +22,7 @@ if [[ ! $PATH =~ '.wshell/bin' ]];then
     echo ''
     echo '# Load pyenv automatically by adding'
     echo "# the following to ${BP}:"
-    echo 'export PATH="${HOME}/.wshell/bin:$PATH"'
+    echo 'export WSPATH="${HOME}/.wshell"'
+    echo 'export PATH="${WSPATH}/bin:$PATH"'
     echo '. ${HOME}/.wshell/bin/conf/.bash_profile'
 fi

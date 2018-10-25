@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+OS="${0/%\/bin\/env\/path/}"
+echo $OS
+

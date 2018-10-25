@@ -1,6 +1,0 @@
-set user root
-set password wxnacy
-# set host localhost
-# set post 3306
-set db tmddev
-# set log_dir /data/log/mysql

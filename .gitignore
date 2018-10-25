@@ -64,7 +64,7 @@ celerybeat-schedule
 # virtualenv
 .venv/
 venv/
-ENV/
+# ENV/
 
 
 # add by wenxiaoning begin
@@ -129,7 +129,6 @@ target/
 */.serverless/
 
 # Distribution / packaging
-env/
 develop-eggs/
 dist/
 downloads/
@@ -147,3 +146,7 @@ tmp/*
 *tmp*
 
 # for public end
+
+# for init data begin
+mysql.conf/
+# for init data end

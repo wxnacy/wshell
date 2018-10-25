@@ -1,0 +1,65 @@
+#!/usr/bin/env bash
+
+WSPATH=`ws env path`
+DIR=$WSPATH/mysql.conf
+DNAME="local.exp"
+
+echo "create *.exp file for Mysql command"
+echo ""
+
+read -p "name(local.exp): " name
+if [ ! $name ];
+then
+    name="local.exp"
+fi
+read -p "user(root): " user
+
+if [ ! $user ];
+then
+    user=root
+fi
+
+read -p 'password: ' -s password
+
+echo ""
+read -p "host(localhost): " host
+if [ ! $host ];
+then
+    host=localhost
+fi
+
+read -p "port(3306): " port
+if [ ! $port ];
+then
+    port=3306
+fi
+
+read -p "db(mysql): " db
+if [ ! $db ];
+then
+    db=mysql
+fi
+
+read -p "log_dir($DIR/logs): " log_dir
+if [ ! $log_dir ];
+then
+    log_dir=$DIR/logs
+fi
+
+test -d $log_dir || mkdir -p $log_dir
+test -d $DIR || mkdir -p $DIR
+
+echo "set user $user
+set password $password
+set host $host
+set port $port
+set db $db
+set log_dir $log_dir" > $DIR/$name
+
+echo ""
+echo "Create *.exp file on $DIR/$DNAME"
+echo ""
+echo "  log dir on $DIR/logs"
+
+
+
