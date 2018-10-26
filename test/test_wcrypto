@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+MSG=message
+
+for i in md5 sha1
+do
+
+    p1=`echo $MSG | ws $i`
+    p2=`echo $MSG | wcrypto $i`
+    if [ $p1 != $p2 ]
+    then
+        echo "pipe $i $p1 $p2 is error"
+    fi
+    r1=`ws $i $MSG`
+    r2=`wcrypto $i $MSG`
+    if [[ $r1 != $r2 ]]
+    then
+        echo "$i $r1 $r2 is error"
+    fi
+done
+
+echo "测试完成"
