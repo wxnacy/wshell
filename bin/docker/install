@@ -18,6 +18,9 @@ install(){
         elif [ ${VER} == '16.04' ]
         then
             install_ubuntu1604
+        elif [ ${VER} == '18.04' ]
+        then
+            install_ubuntu1604
         fi
     fi
 

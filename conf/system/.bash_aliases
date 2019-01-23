@@ -1,6 +1,8 @@
 # Uage: curl https://raw.githubusercontent.com/wxnacy/wshell/master/bin/conf/bash_aliases -o ~/.bash_aliases
 # for git
 alias gst="git status"
+alias gb="git branch"
+alias gt="git tag -l"
 
 # for system
 alias ll="ls -l"
@@ -26,7 +28,7 @@ alias c="clear"
 alias h="history"
 
 # for docker
-alias docker="sudo docker"
+# alias docker="sudo docker"
 
 # for vagrant
 alias vg="vagrant"
