@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+sudo yum -y install wget expect
+
+wget -N --no-check-certificate https://raw.githubusercontent.com/ToyoDAdoubi/doubi/master/ssr.sh && chmod +x ssr.sh
+wget --no-check-certificate https://blog.asuhu.com/sh/ruisu.sh
+wget -N --no-check-certificate https://raw.githubusercontent.com/91yun/serverspeeder/master/serverspeeder-all.sh
+wget -N --no-check-certificate https://raw.githubusercontent.com/wxnacy/wshell/master/bin/ssr/install_ssr
+
+
+expect install_ssr
+bash ruisu.sh
