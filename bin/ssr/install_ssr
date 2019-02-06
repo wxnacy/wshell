@@ -1,7 +1,6 @@
 #!/usr/bin/env expect
 
-spawn sh -c "sudo yum -y install wget"
-spawn sh -c "wget -N --no-check-certificate https://raw.githubusercontent.com/ToyoDAdoubi/doubi/master/ssr.sh && chmod +x ssr.sh && sudo ./ssr.sh"
+spawn sh -c "bash ssr.sh"
 expect "*1-15*"
 # 安装
 send "1\r"

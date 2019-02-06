@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+
+# OS=`curl -L https://raw.githubusercontent.com/wxnacy/wshell/master/bin/base/os | bash`
+OS=`${0/%ssr\/install/base\/os}`
+OSS=(${OS})
+SYS=${OSS[0]}
+VER=${OSS[1]}
+PKG=${OSS[2]}
+echo $OS
+
+case $SYS in
+    debian|ubuntu|devuan|deepin)
+        sudo apt install -y wget expect
+        ;;
+    centos|fedora|rhel|amzn)
+        sudo yum -y install wget expect
+        echo '暂时不支持该系统'
+        ;;
+esac
+
+wget -N --no-check-certificate https://raw.githubusercontent.com/ToyoDAdoubi/doubi/master/ssr.sh && chmod +x ssr.sh
+wget --no-check-certificate https://blog.asuhu.com/sh/ruisu.sh
+wget -N --no-check-certificate https://raw.githubusercontent.com/91yun/serverspeeder/master/serverspeeder-all.sh
+
+
+SH=${0/%install/install_ssr}
+echo $SH
+expect $SH
