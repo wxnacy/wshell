@@ -27,3 +27,4 @@ wget -N --no-check-certificate https://raw.githubusercontent.com/91yun/serverspe
 SH=${0/%install/install_ssr}
 echo $SH
 expect $SH
+bash ruisu.sh
