@@ -79,6 +79,7 @@ $ wshell install java
 - `http` httpie
 - `wvim`
 - `wcrypto`
+- `ssr` 安装后会自动重启，随后登陆执行 `bash serverspeeder-all.sh` 安装加速服务
 - `system`
 
 **system**
