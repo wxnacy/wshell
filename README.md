@@ -24,11 +24,10 @@ curl
 $ curl -L https://raw.githubusercontent.com/wxnacy/wshell/master/wshell-installer | bash
 ```
 
-wget
-
-```bash
-$ wget -qO- https://raw.githubusercontent.com/wxnacy/wshell/master/install | bash
-```
+<!-- wget -->
+<!-- ```bash -->
+<!-- $ wget -qO- https://raw.githubusercontent.com/wxnacy/wshell/master/install | bash -->
+<!-- ``` -->
 
 <!-- **安装指定版本** -->
 <!-- ```bash -->
@@ -38,7 +37,7 @@ $ wget -qO- https://raw.githubusercontent.com/wxnacy/wshell/master/install | bas
 **配置环境**
 
 ```bash
-$ vim ~/.bash_profile
+$ vim ~/.bashrc
 ```
 
 ```bash
@@ -47,7 +46,7 @@ export PATH="${HOME}/.wshell/bin:$PATH"
 ```
 
 ```bash
-$ source ~/.bash_profile
+$ source ~/.bashrc
 ```
 
 ## 使用
