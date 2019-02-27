@@ -10,7 +10,12 @@ PKG=${OSS[2]}
 case $SYS in
     debian|ubuntu|devuan)
         sudo apt update -y
-        sudo apt install default-jdk -y
+        if [[ $VER == '18.04' ]]
+        then
+            sudo apt install openjdk-11-jdk -y
+        else
+            sudo apt install default-jdk -y
+        fi
         ;;
     centos|amzn|fedora|rhel)
         sudo yum update -y

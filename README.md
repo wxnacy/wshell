@@ -41,8 +41,8 @@ $ curl -L https://raw.githubusercontent.com/wxnacy/wshell/master/wshell-installe
 <!-- ``` -->
 
 ```bash
-$ echo 'export WSPATH="${HOME}/.wshell"' >> ~/.bashrc
-$ echo 'export PATH="${WSPATH}/bin:$PATH"' >> ~/.bashrc
+$ echo 'export WSPATH=${HOME}/.wshell' >> ~/.bashrc
+$ echo 'export PATH=${WSPATH}/bin:$PATH' >> ~/.bashrc
 $ source ~/.bashrc
 ```
 <!-- export PATH="${HOME}/.wshell/bin:$PATH" -->

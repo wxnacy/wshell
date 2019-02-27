@@ -28,5 +28,6 @@ if [[ ! $PATH =~ '.wshell/bin' ]];then
     # echo '. ${HOME}/.wshell/conf/system/.bash_profile'
 fi
 
-# echo 'export WSPATH="${HOME}/.wshell"' >> ~/.bashrc
-# echo 'export PATH="${WSPATH}/bin:$PATH"' >> ~/.bashrc
+# echo 'export WSPATH=${HOME}/.wshell' >> ~/.bashrc
+# echo 'export PATH=${WSPATH}/bin:$PATH' >> ~/.bashrc
+# echo -e 'echo \'export PATH=${WSPATH}/bin:$PATH\' >> ~/.bashrc'
