@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-OS=`curl -L https://raw.githubusercontent.com/wxnacy/wshell/master/bin/base/os | bash`
+# OS=`curl -L https://raw.githubusercontent.com/wxnacy/wshell/master/bin/base/os | bash`
+OS=`ws os`
 OSS=(${OS})
 SYS=${OSS[0]}
 VER=${OSS[1]}
@@ -10,30 +11,35 @@ case $SYS in
     debian|ubuntu|devuan|deepin)
         sudo apt update -y
         sudo apt -y install git gcc make patch zlib1g.dev libgdbm-dev libssl-dev libsqlite3-dev libbz2-dev libreadline-dev
+        curl -L https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer | bash
         ;;
     centos|fedora|rhel|amzn)
         sudo yum update -y
         sudo yum -y install git gcc readline readline-devel readline-static openssl openssl-devel openssl-static sqlite-devel bzip2-devel bzip2-libs
+        curl -L https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer | bash
         ;;
     Darwin)
-        echo '暂时不支持该系统'
+        brew update
+        brew install pyenv
         ;;
     *)
         echo '暂时不支持该系统'
         ;;
 esac
 
-BP=~/.bash_profile
-if [ -f ~/.profile ];then
-    BP=~/.profile
-fi
+# BP=~/.bash_profile
+# if [ -f ~/.profile ];then
+    # BP=~/.profile
+# fi
 
-if [[ ! $PATH =~ '/.pyenv/bin' ]];then
-    curl -L https://raw.githubusercontent.com/yyuu/pyenv-installer/master/bin/pyenv-installer | bash
-    echo 'export PATH="${HOME}/.pyenv/bin:$PATH"' >> $BP
-    echo 'eval "$(pyenv init -)"' >> $BP
-    echo 'eval "$(pyenv virtualenv-init -)"' >> $BP
-    source $BP
-    nohup pyenv install 2.7.12 &
-    nohup pyenv install 3.6.0 &
-fi
+
+# if [[ ! $PATH =~ '/.pyenv/bin' ]];then
+    # # curl -L https://raw.githubusercontent.com/yyuu/pyenv-installer/master/bin/pyenv-installer | bash
+    # curl -L https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer | bash
+    # # echo 'export PATH="${HOME}/.pyenv/bin:$PATH"' >> $BP
+    # # echo 'eval "$(pyenv init -)"' >> $BP
+    # # echo 'eval "$(pyenv virtualenv-init -)"' >> $BP
+    # # source $BP
+    # # nohup pyenv install 2.7.12 &
+    # # nohup pyenv install 3.6.0 &
+# fi

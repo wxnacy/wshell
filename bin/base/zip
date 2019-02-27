@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+cmd=$1
+
+
+case $1 in
+    'all')
+
+        for f in `ls`
+        do
+            test -f $f && zip $f.zip $f || zip -r $f.zip $f
+        done
+        ;;
+    *)
+        echo 'do nothing';;
+esac

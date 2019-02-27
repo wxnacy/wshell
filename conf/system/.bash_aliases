@@ -35,4 +35,7 @@ alias vg="vagrant"
 alias vgreup="vagrant destroy -f && vagrant up"
 alias vgd="vagrant destroy -f"
 
+# autossh
+alias assh="autossh -M 0 "
+
 export WSHELL="${HOME}/.wshell"

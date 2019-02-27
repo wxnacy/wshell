@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+# echo `ls -l`
+
+for i in `ls -l`
+do
+    echo $i
+done
