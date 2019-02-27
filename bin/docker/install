@@ -3,7 +3,8 @@
 # 支持：centos7 amzn2 ubuntu16.04 ubuntu14.04
 # ubuntu 还不支持自启动
 
-OS=`curl -L https://raw.githubusercontent.com/wxnacy/wshell/master/bin/base/os | bash`
+# OS=`curl -L https://raw.githubusercontent.com/wxnacy/wshell/master/bin/base/os | bash`
+OS=`ws os`
 OSS=(${OS})
 SYS=${OSS[0]}
 VER=${OSS[1]}
