@@ -21,7 +21,7 @@ $ sudo apt/yum install -y curl git
 curl
 
 ```bash
-$ curl -L https://raw.githubusercontent.com/wxnacy/wshell/master/install | bash
+$ curl -L https://raw.githubusercontent.com/wxnacy/wshell/master/wshell-installer | bash
 ```
 
 wget
