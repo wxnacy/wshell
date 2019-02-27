@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 OS=`curl -L https://raw.githubusercontent.com/wxnacy/wshell/master/bin/base/os | bash`
+OS=`ws os`
 OSS=(${OS})
 SYS=${OSS[0]}
 VER=${OSS[1]}
@@ -10,6 +11,9 @@ case $SYS in
     debian|ubuntu|devuan|deepin)
         sudo apt update -y
         sudo apt install -y mysql-server
+        echo 'init password by command'
+        echo '  sudo mysql_secure_installation'
+        echo 'For more documentation, see: https://wxnacy.com/2018/10/11/ubuntu1804-install-mysql/'
         ;;
     centos|fedora|rhel|amzn)
         if [ ! `command -v mysql` ];then

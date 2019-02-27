@@ -36,23 +36,26 @@ $ curl -L https://raw.githubusercontent.com/wxnacy/wshell/master/wshell-installe
 
 **配置环境**
 
-```bash
-$ vim ~/.bashrc
-```
+<!-- ```bash -->
+<!-- $ vim ~/.bashrc -->
+<!-- ``` -->
 
 ```bash
-export PATH="${HOME}/.wshell/bin:$PATH"
-. ${HOME}/.wshell/bin/conf/.bash_profile
-```
-
-```bash
+$ echo 'export WSPATH="${HOME}/.wshell"' >> ~/.bashrc
+$ echo 'export PATH="${WSPATH}/bin:$PATH"' >> ~/.bashrc
 $ source ~/.bashrc
 ```
+<!-- export PATH="${HOME}/.wshell/bin:$PATH" -->
+<!-- . ${HOME}/.wshell/bin/conf/.bash_profile -->
+
+<!-- ```bash -->
+<!-- $ source ~/.bashrc -->
+<!-- ``` -->
 
 ## 使用
 
 ```bash
-$ wshell <command> [args...]
+$ ws[hell] <command> [args...]
 ```
 
 ## 参数

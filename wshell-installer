@@ -12,10 +12,11 @@ WSHELL_HOME=${HOME}/.wshell
 
 test -d ${WSHELL_HOME} || git clone https://github.com/wxnacy/wshell ${WSHELL_HOME}
 
-BP=~/.bash_profile
-if [ -f ~/.profile ];then
-    BP=~/.profile
-fi
+# BP=~/.bash_profile
+# if [ -f ~/.profile ];then
+    # BP=~/.profile
+# fi
+BP=~/.bashrc
 
 if [[ ! $PATH =~ '.wshell/bin' ]];then
     echo 'WARNING: seems you still have not added 'wshell' to the load path.'
@@ -24,5 +25,8 @@ if [[ ! $PATH =~ '.wshell/bin' ]];then
     echo "# the following to ${BP}:"
     echo 'export WSPATH="${HOME}/.wshell"'
     echo 'export PATH="${WSPATH}/bin:$PATH"'
-    echo '. ${HOME}/.wshell/conf/system/.bash_profile'
+    # echo '. ${HOME}/.wshell/conf/system/.bash_profile'
 fi
+
+# echo 'export WSPATH="${HOME}/.wshell"' >> ~/.bashrc
+# echo 'export PATH="${WSPATH}/bin:$PATH"' >> ~/.bashrc
