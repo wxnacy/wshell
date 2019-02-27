@@ -1,9 +1,13 @@
 #!/usr/bin/env bash
 
-OS=`curl -L https://raw.githubusercontent.com/wxnacy/wshell/master/bin/base/os | bash`
-OSS=(${OS})
-SYS=${OSS[0]}
-VER=${OSS[1]}
-PKG=${OSS[2]}
-
-sudo $PKG upgrade -y
+SH=${0/%base\/upgrade/upgrade\/${1}}
+if [ -f $SH ];then
+    $SH
+else
+    SH=${0/%base\/upgrade/${1}\/upgrade}
+    if [ -f $SH ];then
+        $SH
+    else
+        help
+    fi
+fi
