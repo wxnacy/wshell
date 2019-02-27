@@ -15,7 +15,7 @@ case $SYS in
     centos|amzn|fedora|rhel)
         sudo yum update -y
         # sudo yum install -y java-1.8.0-openjdk-devel
-        sudo yum install java-11-openjdk -y
+        sudo yum install java-11-openjdk-devel -y
         ;;
     *)
         echo '暂时不支持该系统'
