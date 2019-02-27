@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
 WSHELL_HOME=${HOME}/.wshell
-VERSION=1.3.5
+VER_PATH=${WSPATH}/VERSION
+VERSION=`cat $VER_PATH`
 CMD=$1
 ARGS=($@)
 
@@ -17,11 +18,19 @@ help(){
     echo 'Usage: wshell <command> [<args>]'
     echo ''
     echo 'Some useful Wshell commands are:'
-
-    echo -e '\tinstall\tInstall software by name'
-    echo -e '\tupdate\tUpdate the wshell version'
-    echo -e '\tcheck\tCheck the installation of common software'
-    echo -e '\t<software> <command>\tRun software script'
+    echo -e '
+    install\tInstall software by name
+    upgrade\tUpgrade software by name
+    update\tUpdate the wshell version
+    check\tCheck the installation of common software
+    os\t\tDisplay system information of the current machine
+    ip\t\tDisplay the private network ip of the current machine
+    md5\t\tCalculate the MD5 value of a text or file
+    sha1\tCalculate the SHA1 value of a text or file
+    sha256\tCalculate the SHA256 of a text or file
+    sha512\tCalculate the SHA512 of a text or file
+    <software> <command>\tRun software script
+    '
     # echo -e '\tmysql\tRun mysql shell'
     # echo 'See `wshell help <command>` for information on a specific command.'
     # echo 'For full documentation, see: https://github.com/yyuu/pyenv#readme'
