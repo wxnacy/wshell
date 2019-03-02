@@ -24,33 +24,17 @@ curl
 $ curl -L https://raw.githubusercontent.com/wxnacy/wshell/master/wshell-installer | bash
 ```
 
-<!-- wget -->
-<!-- ```bash -->
-<!-- $ wget -qO- https://raw.githubusercontent.com/wxnacy/wshell/master/install | bash -->
-<!-- ``` -->
-
-<!-- **安装指定版本** -->
-<!-- ```bash -->
-<!-- $ curl -L https://raw.githubusercontent.com/wxnacy/wshell/${tag_name}/install | bash -->
-<!-- ``` -->
 
 **配置环境**
 
-<!-- ```bash -->
-<!-- $ vim ~/.bashrc -->
-<!-- ``` -->
 
 ```bash
-$ echo 'export WSPATH=${HOME}/.wshell' >> ~/.bashrc
-$ echo 'export PATH=${WSPATH}/bin:$PATH' >> ~/.bashrc
+$ echo 'export WS_HOME=${HOME}/.wshell' >> ~/.bashrc
+$ echo 'export PATH=${WS_HOME}/bin:$PATH' >> ~/.bashrc
+$ echo '. ${WS_HOME}/conf/system/bashrc' >> ~/.bashrc
 $ source ~/.bashrc
 ```
-<!-- export PATH="${HOME}/.wshell/bin:$PATH" -->
-<!-- . ${HOME}/.wshell/bin/conf/.bash_profile -->
 
-<!-- ```bash -->
-<!-- $ source ~/.bashrc -->
-<!-- ``` -->
 
 ## 使用
 
@@ -71,7 +55,7 @@ $ wshell install java
 
 - `mysql` 5.7.x
 - `java` OpenJDK 1.8.0
-- `nvm` 0.34.0 
+- `nvm` 0.34.0
 - `es, elasticsearch` Elasticsearch 6.x 最新版
 - `pyenv`
 - `docker`

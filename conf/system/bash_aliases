@@ -26,8 +26,8 @@ if [ -f ~/.zshrc ];then
     alias zshc="vim ~/.zshrc"
 fi
 
-alias bs="source ~/.bashrc"
-alias bc="vim ~/.bashrc"
+alias bashs="source ~/.bashrc"
+alias bashc="vim ~/.bashrc"
 
 alias bas="source ~/.bash_aliases"
 alias bac="vim ~/.bash_aliases"

@@ -1,11 +1,12 @@
 #!/usr/bin/env bash
 
+git clone https://github.com/syndbg/goenv.git ~/.goenv
+
 OS=`ws os`
 OSS=(${OS})
 SYS=${OSS[0]}
 VER=${OSS[1]}
 PKG=${OSS[2]}
-
 
 
 install_zsh(){

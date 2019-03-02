@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-WSHELL_HOME=${HOME}/.wshell
-VER_PATH=${WSPATH}/VERSION
+# WS_HOME=${HOME}/.wshell
+VER_PATH="${WS_HOME}"/VERSION
 VERSION=`cat $VER_PATH`
 CMD=$1
 ARGS=($@)

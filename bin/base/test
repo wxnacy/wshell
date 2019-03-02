@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+echo $(ws home)
+
+echo -n echo \'
+echo -n 'export WS_HOME="${HOME}/.wshell"'
+echo \' '>> ~/.bashrc'
+
+echo -n echo \'
+echo -n 'export PATH="${WS_HOME}/bin:$PATH"'
+echo \' '>> ~/.bashrc'
+
+echo -n echo \'
+echo -n '. ${WS_HOME}/conf/system/bashrc'
+echo \' '>> ~/.bashrc'
+
+[ -z ${PATH} ] && echo 'not' || echo 'yes'

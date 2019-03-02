@@ -8,24 +8,34 @@ for i in git curl;do
     fi
 done
 
-WSHELL_HOME=${HOME}/.wshell
+WS_HOME=${HOME}/.wshell
 
-test -d ${WSHELL_HOME} || git clone https://github.com/wxnacy/wshell ${WSHELL_HOME}
+test -d ${WS_HOME} || git clone https://github.com/wxnacy/wshell ${WS_HOME}
 
-# BP=~/.bash_profile
-# if [ -f ~/.profile ];then
-    # BP=~/.profile
-# fi
 BP=~/.bashrc
 
 if [[ ! $PATH =~ '.wshell/bin' ]];then
     echo 'WARNING: seems you still have not added 'wshell' to the load path.'
     echo ''
-    echo '# Load pyenv automatically by adding'
-    echo "# the following to ${BP}:"
-    echo 'export WSPATH="${HOME}/.wshell"'
-    echo 'export PATH="${WSPATH}/bin:$PATH"'
-    # echo '. ${HOME}/.wshell/conf/system/.bash_profile'
+    echo '# Load wshell automatically by commands'
+    # echo '# Load wshell automatically by adding'
+    # echo "# the following to ${BP}:"
+
+    echo -n echo \'
+    echo -n 'export WS_HOME="${HOME}/.wshell"'
+    echo \' '>> ~/.bashrc'
+
+    echo -n echo \'
+    echo -n 'export PATH="${WS_HOME}/bin:$PATH"'
+    echo \' '>> ~/.bashrc'
+
+    echo -n echo \'
+    echo -n '. ${WS_HOME}/conf/system/bashrc'
+    echo \' '>> ~/.bashrc'
+
+    # echo 'export WS_HOME="${HOME}/.wshell"'
+    # echo 'export PATH="${WS_HOME}/bin:$PATH"'
+    # echo '. ${WS_HOME}/conf/system/bashrc'
 fi
 
 # echo 'export WSPATH=${HOME}/.wshell' >> ~/.bashrc

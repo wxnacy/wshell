@@ -1,6 +1,7 @@
 . ${HOME}/.wshell/conf/system/bash_aliases
 
 if [ -d "${HOME}/.pyenv" ]; then
+    # https://github.com/pyenv/pyenv#basic-github-checkout
     export PYENV_ROOT="$HOME/.pyenv"
     export PATH="${PYENV_ROOT}/bin:${PATH}"
 
@@ -19,11 +20,9 @@ function proxyoff(){
     unset http_proxy
     unset https_proxy
     echo -e "已关闭代理"
-
 }
 
 function proxyon() {
-    # export no_proxy="localhost,127.0.0.1,localaddress,.localdomain.com"
     export no_proxy="baidu.com,github.com,wxnacy.com"
     export http_proxy="http://127.0.0.1:1080"
     export https_proxy=$http_proxy
