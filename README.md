@@ -71,7 +71,7 @@ $ wshell install java
 
 - `mysql` 5.7.x
 - `java` OpenJDK 1.8.0
-- `nvm` 0.33.11
+- `nvm` 0.34.0 
 - `es, elasticsearch` Elasticsearch 6.x 最新版
 - `pyenv`
 - `docker`

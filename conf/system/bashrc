@@ -1,7 +1,4 @@
-
-# . ${HOME}/.wshell/bin/conf/.bash_aliases
-. ${0/%bash_profile/bash_aliases}
-
+. ${HOME}/.wshell/conf/system/bash_aliases
 
 
 if [ -d "${HOME}/.pyenv" ]; then
