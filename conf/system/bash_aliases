@@ -10,20 +10,31 @@ alias la="ls -la"
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
+
 if [ -f ~/.bash_profile ];then
     alias bps="source ~/.bash_profile"
     alias bpc="vim ~/.bash_profile"
 fi
+
 if [ -f ~/.profile ];then
     alias bps="source ~/.profile"
     alias bpc="vim ~/.profile"
 fi
+
+if [ -f ~/.zshrc ];then
+    alias zshs="source ~/.zshrc"
+    alias zshc="vim ~/.zshrc"
+fi
+
 alias bs="source ~/.bashrc"
 alias bc="vim ~/.bashrc"
+
 alias bas="source ~/.bash_aliases"
 alias bac="vim ~/.bash_aliases"
+
 alias sshc="vim ~/.ssh/config"
 alias vimc="vim ~/.vimrc"
+
 alias c="clear"
 alias h="history"
 
@@ -38,4 +49,3 @@ alias vgd="vagrant destroy -f"
 # autossh
 alias assh="autossh -M 0 "
 
-export WSHELL="${HOME}/.wshell"
