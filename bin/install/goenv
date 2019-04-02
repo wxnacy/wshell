@@ -1,25 +1,27 @@
 #!/usr/bin/env bash
 
-git clone https://github.com/syndbg/goenv.git ~/.goenv
 
-OS=`ws os`
-OSS=(${OS})
-SYS=${OSS[0]}
-VER=${OSS[1]}
-PKG=${OSS[2]}
+[ -d ${HOME}/.goenv ] || git clone https://github.com/syndbg/goenv.git ~/.goenv
 
 
-install_zsh(){
-    OS=`curl -L https://raw.githubusercontent.com/wxnacy/wshell/master/bin/base/os | bash`
-    OSS=(${OS})
-    SYS=${OSS[0]}
-    VER=${OSS[1]}
-    PKG=${OSS[2]}
-    chsh -s /bin/zsh
-}
+if ! command -v goenv 1>/dev/null 2>&1; then
+    echo 'WARNING: seems you still have not added 'goenv' to the load path.'
+    echo ''
+    echo 'Load goenv automatically by commands'
+    echo ''
 
-if [ ! `command -v zsh` ];then
-    sudo $PKG install -y zsh
+    echo -n -e "\t"echo \'
+    echo -n 'export GOENV_ROOT="$HOME/.goenv"'
+    echo \' '>> ~/.bashrc'
+
+    echo -n -e "\t"echo \'
+    echo -n 'export PATH="$GOENV_ROOT/bin:$PATH"'
+    echo \' '>> ~/.bashrc'
+
+    echo -n -e "\t"echo -e \'
+    echo -n 'if command -v goenv 1>/dev/null 2>&1; then\n  eval "$(goenv init -)"\nfi'
+    echo \' '>> ~/.bashrc'
+
+    echo -e "\tsource ~/.bashrc"
 fi
 
-sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"

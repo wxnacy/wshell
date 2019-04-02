@@ -1,0 +1,25 @@
+# for golang
+export GOPATH=/Users/wxnacy/Projects/goland
+export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:/Users/wxnacy/PycharmProjects/study/goland/bin
+
+# for wshell
+export WS_HOME="${HOME}/.wshell"
+export PATH=$PATH:${WS_HOME}/bin
+
+
+function proxyoff(){
+    unset http_proxy
+    unset https_proxy
+    echo -e "已关闭代理"
+}
+
+function proxyon() {
+    export no_proxy="baidu.com,github.com,wxnacy.com"
+    export http_proxy="http://127.0.0.1:1080"
+    export https_proxy=$http_proxy
+    echo -e "已开启代理"
+}
+if [ -f ~/.bash_aliases ]; then
+    source ~/.bash_aliases
+fi

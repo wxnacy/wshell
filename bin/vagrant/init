@@ -1,0 +1,56 @@
+#!/usr/bin/env bash
+
+BOX=$1
+
+VG_HOME=/home/vagrant
+
+init(){
+cat > Vagrantfile << EOF
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+  config.vm.box = "${BOX}"
+  config.vm.network "private_network", ip: "192.168.33.18"
+
+  config.vm.synced_folder "~/Downloads", "${VG_HOME}/Downloads"
+  config.vm.synced_folder "~/PycharmProjects", "${VG_HOME}/PycharmProjects"
+  config.vm.synced_folder "~/WebstormProjects", "${VG_HOME}/WebstormProjects"
+  config.vm.synced_folder "~/Projects", "${VG_HOME}/Projects"
+
+  config.vm.provider "virtualbox" do |vb|
+    # Display the VirtualBox GUI when booting the machine
+    # vb.gui = true
+    # Customize the amount of memory on the VM:
+    vb.memory = "1024"
+  end
+
+  # Enable provisioning with a shell script. Additional provisioners such as
+  # Puppet, Chef, Ansible, Salt, and Docker are also available. Please see the
+  # documentation for more information about their specific syntax and use.
+  config.vm.provision "shell", inline: <<-SHELL
+    echo 'export WS_HOME=\${HOME}/Projects/wshell' >> ${VG_HOME}/.bashrc
+    echo 'export PATH=\${WS_HOME}/bin:\$PATH' >> ${VG_HOME}/.bashrc
+    echo '. \${WS_HOME}/conf/system/bashrc' >> ${VG_HOME}/.bashrc
+    # apt-get update
+    # apt-get install -y apache2
+  SHELL
+end
+EOF
+}
+
+
+if [ ! -f Vagrantfile ];then
+    init
+    echo '
+A `Vagrantfile` has been placed in this directory. You are now
+ready to `vagrant up` your first virtual environment! Please read
+the comments in the Vagrantfile as well as documentation on
+`vagrantup.com` for more information on using Vagrant.
+    '
+else
+    echo '
+`Vagrantfile` already exists in this directory. Remove it before
+running `vagrant init`.
+    '
+fi

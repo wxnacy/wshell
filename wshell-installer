@@ -21,17 +21,19 @@ if [[ ! $PATH =~ '.wshell/bin' ]];then
     # echo '# Load wshell automatically by adding'
     # echo "# the following to ${BP}:"
 
-    echo -n echo \'
+    echo -n -e "\t"echo \'
     echo -n 'export WS_HOME="${HOME}/.wshell"'
     echo \' '>> ~/.bashrc'
 
-    echo -n echo \'
+    echo -n -e "\t"echo \'
     echo -n 'export PATH="${WS_HOME}/bin:$PATH"'
     echo \' '>> ~/.bashrc'
 
-    echo -n echo \'
+    echo -n -e "\t"echo \'
     echo -n '. ${WS_HOME}/conf/system/bashrc'
     echo \' '>> ~/.bashrc'
+
+    echo -e "\tsource ~/.bashrc"
 
     # echo 'export WS_HOME="${HOME}/.wshell"'
     # echo 'export PATH="${WS_HOME}/bin:$PATH"'

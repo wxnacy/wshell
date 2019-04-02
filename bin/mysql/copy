@@ -1,18 +1,38 @@
 #!/usr/bin/env expect
 
 set timeout 10
-source [lindex $argv 0]
+set copy_from [lindex $argv 0]
+set copy_to [lindex $argv 1]
+set table_name [lindex $argv 2]
+set conf_dir $env(HOME)/.config/wshell/mysql
 
+source $conf_dir/$copy_from
+if { [info exists port] == 0 } {
+    set port 3306
+}
+if { [info exists host] == 0 } {
+    set host localhost
+}
+
+set dump_file /tmp/${copy_from}_${db}_${table_name}.sql
 
 spawn sh -c "mysqldump \
     --default-character-set=utf8mb4 --routines --single-transaction --force -v \
     --add-drop-table --create-options --quick --extended-insert --compress \
-    -u${source_user} -p -h ${source_host} ${source_db} ${source_table} > ${dump_dir}/${source_db}_${source_table}.sql"
+    -u${user} -p -h ${host} -P ${port} ${db} ${table_name} > ${dump_file}"
 expect "*password:*"
-send "${source_password}\r"
+send "${password}\r"
 interact
 
-spawn sh -c "mysql -u${user} -p ${db} < ${dump_dir}/${source_db}_${source_table}.sql"
+source $conf_dir/$copy_to
+if { [info exists port] == 0 } {
+    set port 3306
+}
+if { [info exists host] == 0 } {
+    set host localhost
+}
+
+spawn sh -c "mysql -u${user} -p -h ${host} -P ${port} ${db} < ${dump_file}"
 expect "*password:*"
 send "${password}\r"
 interact

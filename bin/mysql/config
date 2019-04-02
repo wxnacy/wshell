@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+
+conf_dir=`ws config home`/mysql
+conf_name=$1
+
+if [ ! $conf_name ];
+then
+    echo 'Usage: ws config mysql <config_name>'
+    exit
+fi
+
+conf_file=$conf_dir/$conf_name
+
+create(){
+    echo "Create config path on : ${conf_file}"
+    cat <<EOF | tee $conf_file
+# Mysql connect user.
+set user root
+
+# Mysql connect password.
+set password
+
+# Mysql connect host. Default localhost
+# set host localhost
+
+# Mysql connect port. Default 3306
+# set port 3306
+
+# Your mysql db name for commands: login dump copy
+set db
+EOF
+}
+
+test -d $conf_dir || mkdir -p $conf_dir
+test -f $conf_file || create
+
+vim $conf_file

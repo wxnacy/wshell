@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+if [ -f "~/.bashrc" ]; then
+    mv ${HOME}/.bashrc ${HOME}/.bashrc.old
+fi
+
+ln -sf ${WS_HOME}/conf/bash/bashrc ${HOME}/.bashrc
+
+if [ -f "~/.bashrc" ]; then
+    mv ${HOME}/.bash_aliases ${HOME}/.bash_aliases.old
+fi
+
+ln -sf ${WS_HOME}/conf/bash/bash_aliases ${HOME}/.bash_aliases

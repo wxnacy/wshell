@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+[ -z ${WS_CONFIG_HOME} ] && echo "$HOME/.config/wshell" || echo ${WS_CONFIG_HOME}

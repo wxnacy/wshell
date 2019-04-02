@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+mv ${HOME}/.zshrc ${HOME}/.zshrc.o
+ln -sf ${WS_HOME}/conf/zsh/zshrc ${HOME}/.zshrc
+
+mv ${HOME}/.zprofile ${HOME}/.zprofile.old
+ln -sf ${WS_HOME}/conf/zsh/zprofile ${HOME}/.zprofile

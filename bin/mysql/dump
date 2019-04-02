@@ -1,21 +1,21 @@
 #!/usr/bin/env expect
 
-set conf [lindex $argv 0]
+set conf_name [lindex $argv 0]
+set table [lindex $argv 1]
+set conf_dir $env(HOME)/.config/wshell/mysql
 
-if { [file exists $conf] == 0 } {
-    set conf /etc/wshell/mysql.conf
+if { $conf_name == "" } {
+    set conf_name "local"
 }
 
-if { [file exists $conf] == 0 } {
-    set conf /usr/local/etc/wshell/mysql.conf
-}
+set conf $conf_dir/$conf_name
 
 if { [file exists $conf] == 0 } {
-    puts "Usage: wshell mysql dump <configure_path>"
+    puts "Usage: wshell mysql login <config_name>"
     puts ""
     puts "Or"
     puts ""
-    puts "Put the configure on /etc/wshell/mysql.conf or /usr/local/etc/wshell/mysql.conf"
+    puts "Use command: <ws mysql config <config_name>> to create conf file"
     exit
 }
 
@@ -27,12 +27,13 @@ if { [info exists port] == 0 } {
 if { [info exists host] == 0 } {
     set host localhost
 }
+
 if { [info exists log_dir] } {
     if { [file isdirectory ${log_dir}] == 0 } {
         puts "Directory '${log_dir}' does not exist"
         exit
     }
-    set log --tee=${log_dir}/mysql.[clock scan 1997].log
+    set log --tee=${log_dir}/$conf_name.[clock scan 1997].log
 } else {
     set log ""
 }
@@ -40,8 +41,8 @@ if { [info exists log_dir] } {
 spawn sh -c "mysqldump \
     --default-character-set=utf8mb4 --routines --single-transaction --force -v \
     --add-drop-table --create-options --quick --extended-insert --compress \
-    -u${user} -p -h ${host} -P ${port} ${db} \
-    > ${dumpdir}/${db}-`date +%Y-%m-%d_%H:%M:%S`.sql"
+    -u${user} -p -h ${host} -P ${port} ${db} ${table}\
+    > /tmp/${db}-${table}-`date +%Y-%m-%d_%H:%M:%S`.sql"
 expect "*password:*"
 send "${password}\r"
 interact

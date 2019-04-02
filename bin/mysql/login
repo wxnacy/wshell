@@ -1,7 +1,8 @@
 #!/usr/bin/env expect
 
 set conf_name [lindex $argv 0]
-set conf_dir $env(WSPATH)/mysql.conf
+set conf_dir $env(HOME)/.config/wshell/mysql
+
 
 
 if { $conf_name == "" } {
@@ -11,11 +12,11 @@ if { $conf_name == "" } {
 set conf $conf_dir/$conf_name
 
 if { [file exists $conf] == 0 } {
-    puts "Usage: wshell mysql login <configure_path>"
+    puts "Usage: wshell mysql login <config_name>"
     puts ""
     puts "Or"
     puts ""
-    puts "Use command: <ws mysql init> to create conf file"
+    puts "Use command: <ws mysql config <config_name>> to create conf file"
     exit
 }
 

@@ -7,16 +7,6 @@ VER=${OSS[1]}
 PKG=${OSS[2]}
 
 
-
-install_zsh(){
-    OS=`curl -L https://raw.githubusercontent.com/wxnacy/wshell/master/bin/base/os | bash`
-    OSS=(${OS})
-    SYS=${OSS[0]}
-    VER=${OSS[1]}
-    PKG=${OSS[2]}
-    chsh -s /bin/zsh
-}
-
 if [ ! `command -v zsh` ];then
     sudo $PKG install -y zsh
 fi
