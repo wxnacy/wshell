@@ -7,6 +7,9 @@ export PATH=$PATH:/Users/wxnacy/PycharmProjects/study/goland/bin
 export WS_HOME="${HOME}/.wshell"
 export PATH=$PATH:${WS_HOME}/bin
 
+# for image
+export PATH=$PATH:/Users/wxnacy/Projects/image
+
 
 function proxyoff(){
     unset http_proxy

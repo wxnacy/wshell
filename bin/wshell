@@ -6,7 +6,8 @@ VERSION=`cat $VER_PATH`
 CMD=$1
 ARGS=($@)
 
-OS=`${0/%wshell/base\/os}`
+# OS=`${0/%wshell/base\/os}`
+OS=`${WS_HOME}/bin/base/os`
 OSS=(${OS})
 SYS=${OSS[0]}
 VER=${OSS[1]}
