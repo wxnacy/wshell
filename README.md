@@ -3,12 +3,29 @@
 Wshell 是集成化的 Linux 服务器脚本，主旨是尽量将常用软件的复杂安装过程和操作一键化，提高工作效率。
 
 **适配**
+- MacOS
 - Ubuntu
 - Debian
 - CentOS
 
 
 ## 安装
+
+### MacOS
+
+**安装**
+
+```bash
+$ brew tap wxnacy/tap && brew install wshell
+```
+
+**更新**
+
+```bash
+$ brew update && brew upgrade wshell
+```
+
+### Linux
 
 **安装最新版**
 
@@ -24,7 +41,6 @@ curl
 $ curl -L https://raw.githubusercontent.com/wxnacy/wshell/master/wshell-installer | bash
 ```
 
-
 **配置环境**
 
 
@@ -35,8 +51,20 @@ $ echo '. ${WS_HOME}/conf/system/bashrc' >> ~/.bashrc
 $ source ~/.bashrc
 ```
 
+**查看版本**
 
-## 使用
+```bash
+$ ws version
+```
+
+**更新**
+
+```bash
+$ ws update
+```
+
+
+## 语法
 
 ```bash
 $ ws[hell] <command> [args...]
@@ -64,7 +92,6 @@ $ wshell install java
 - `htop`
 - `http` httpie
 - `wvim`
-- `wcrypto`
 - `ssr` 安装后会自动重启，随后登陆执行 `bash serverspeeder-all.sh` 安装加速服务
 - `system`
 
@@ -93,3 +120,28 @@ c++, pcre, pcre-devel, openssl, openssl-devel, epel-release, zlib, zlib-devel, r
 ### os
 
 查看系统版本信息
+
+```bash
+$ ws os
+Darwin 10.14.3 brew
+# 平台名称  版本号  使用包管理工具
+```
+
+### hash
+
+计算 hash 值，可以传入字符串或者文件名
+
+```bash
+$ ws <md5|sha1|sha256|sha512> <text|filename>
+```
+
+**例子**
+
+```bash
+$ ws md5 wxnacy             # 计算字符串
+1f806eb48b670c40af49a3f764ba086f wxnacy
+$ ws md5 README.md          # 计算文件
+cf4b95753d3382d3560b1ad4f068db01
+$ cat README.md | ws md5    # 接收管道信息
+cf4b95753d3382d3560b1ad4f068db01
+```

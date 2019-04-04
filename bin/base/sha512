@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-echo `ws wcrypto sha512 $1`
+# echo `ws wcrypto sha512 $1`

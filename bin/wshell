@@ -3,17 +3,17 @@
 # WS_HOME=${HOME}/.wshell
 # VER_PATH="${WS_HOME}"/VERSION
 # VERSION=`cat $VER_PATH`
-CMD=$1
-ARGS=($@)
+# CMD=$1
+# ARGS=($@)
 
-OS=`${WS_HOME}/bin/base/os`
-OSS=(${OS})
-SYS=${OSS[0]}
-VER=${OSS[1]}
+# OS=`${WS_HOME}/bin/base/os`
+# OSS=(${OS})
+# SYS=${OSS[0]}
+# VER=${OSS[1]}
 
 help(){
     echo "Wshell Version: $(version)"
-    echo "Your system are: ${OS}"
+    echo "Your system are: $($WS_HOME/bin/base/os)"
     echo ''
     echo 'Usage: wshell <command> [<args>]'
     echo ''
@@ -36,37 +36,22 @@ help(){
     # echo 'For full documentation, see: https://github.com/yyuu/pyenv#readme'
 }
 
-
-# install(){
-    # name=${2}
-    # SH=${0/%wshell/${1}/${name}}
-    # if [ -f $SH ];then
-        # $SH
-    # else
-        # SH=${0/%wshell/${name}/${1}}
-        # if [ -f $SH ];then
-            # $SH
-        # else
-            # help
-        # fi
-    # fi
-# }
-
 other(){
-    SH=$(ws home)/bin/$1/$2
+    ws_home=$(ws home)
+    SH=${ws_home}/bin/$1/$2
     if [ -f $SH ];then
         $SH $3 $4 $5 $6
         exit
     fi
 
-    SH=$(ws home)/bin/$2/$1
+    SH=${ws_home}/bin/$2/$1
     if [ -f $SH ];then
         $SH $3 $4 $5 $6
         exit
     fi
 
     # SH=${0/%wshell/base\/$1}
-    SH=$(ws home)/bin/base/$1
+    SH=${ws_home}/bin/base/$1
     if [ -f $SH ];then
         $SH $2 $3 $4 $5 $6
         exit
@@ -84,11 +69,27 @@ version() {
     echo `cat $(ws home)/VERSION`
 }
 
+hash() {
+    msg=$2
+    if [ -f $msg ]
+    then
+        echo `cat $msg | ws wcrypto $1`
+    else
+        echo `ws wcrypto $1 $msg`
+    fi
+
+}
+
 case "$1" in
     help)  help;;
     -h)  help;;
     -V)  help;;
     -v)  version;;
+    version)  version;;
+    md5)  hash $1 $2;;
+    sha1)  hash $1 $2;;
+    sha256)  hash $1 $2;;
+    sha512)  hash $1 $2;;
     home)  home;;
     *)       other $1 $2 $3 $4 $5 $6 $7;;
 esac

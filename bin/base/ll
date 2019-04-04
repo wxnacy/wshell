@@ -2,7 +2,12 @@
 
 # echo `ls -l`
 
-for i in `ls -l`
-do
-    echo $i
-done
+# for i in `ls -lh`
+# do
+    # echo $i
+# done
+
+# echo `ls -lh`
+
+# `ls -lh`
+# $(ls -lh)
