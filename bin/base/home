@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-
-[ -z ${WS_HOME} ] && echo "$HOME/.wshell" || echo ${WS_HOME}
-

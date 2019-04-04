@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 
-SH=${0/%base\/install/install\/${1}}
-if [ -f $SH ];then
-    $SH
-else
-    SH=${0/%base\/install/${1}\/install}
-    if [ -f $SH ];then
-        $SH
-    else
-        help
-    fi
-fi
+# SH=${0/%base\/install/install\/${1}}
+# if [ -f $SH ];then
+    # $SH
+# else
+    # SH=${0/%base\/install/${1}\/install}
+    # if [ -f $SH ];then
+        # $SH
+    # else
+        # help
+    # fi
+# fi

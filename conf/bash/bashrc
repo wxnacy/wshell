@@ -4,7 +4,10 @@ export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:/Users/wxnacy/PycharmProjects/study/goland/bin
 
 # for wshell
-export WS_HOME="${HOME}/.wshell"
+# export WS_HOME="${HOME}/.wshell"
+
+export WS_HOME=$(brew --prefix wshell)
+# export WS_HOME="${HOME}/.wshell"
 export PATH=$PATH:${WS_HOME}/bin
 
 # for image
