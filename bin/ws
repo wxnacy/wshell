@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
-OS="${0/%ws/wshell}"
-$OS $@
+# OS="${0/%ws/wshell}"
+# OS="${WS_HOME}/bin/wshell"
+# $OS $@
+wshell $@
+
 

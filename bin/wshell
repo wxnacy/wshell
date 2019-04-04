@@ -6,7 +6,6 @@ VERSION=`cat $VER_PATH`
 CMD=$1
 ARGS=($@)
 
-# OS=`${0/%wshell/base\/os}`
 OS=`${WS_HOME}/bin/base/os`
 OSS=(${OS})
 SYS=${OSS[0]}
@@ -53,35 +52,23 @@ install(){
     fi
 }
 
-# other(){
-    # SH=${0/%wshell/base\/$1}
-    # if [ -f $SH ];then
-        # $SH ${2} $3
-    # else
-        # SH=${0/%wshell/${1}/${2}}
-        # # SH=$WSPATH/bin/$1/$2
-        # if [ -f $SH ];then
-            # $SH $3 $4 $5
-        # else
-            # help
-        # fi
-    # fi
-# }
-
 other(){
-    SH=${0/%wshell/${1}/${2}}
+    # SH=${0/%wshell/${1}/${2}}
+    SH=${WS_HOME}/$1/$2
     if [ -f $SH ];then
         $SH $3 $4 $5 $6
         exit
     fi
 
-    SH=${0/%wshell/${2}/${1}}
+    # SH=${0/%wshell/${2}/${1}}
+    SH=${WS_HOME}/$2/$1
     if [ -f $SH ];then
         $SH $3 $4 $5 $6
         exit
     fi
 
-    SH=${0/%wshell/base\/$1}
+    # SH=${0/%wshell/base\/$1}
+    SH=${WS_HOME}/base/$1
     if [ -f $SH ];then
         $SH $2 $3 $4 $5 $6
         exit
