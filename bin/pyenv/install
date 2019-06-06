@@ -6,25 +6,35 @@ SYS=${OSS[0]}
 VER=${OSS[1]}
 PKG=${OSS[2]}
 
-case $SYS in
-    debian|ubuntu|devuan|deepin)
-        sudo apt update -y
-        sudo apt -y install git gcc make patch zlib1g.dev libgdbm-dev libssl-dev libsqlite3-dev libbz2-dev libreadline-dev
-        curl -L https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer | bash
-        ;;
-    centos|fedora|rhel|amzn)
-        sudo yum update -y
-        sudo yum -y install git gcc readline readline-devel readline-static openssl openssl-devel openssl-static sqlite-devel bzip2-devel bzip2-libs
-        curl -L https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer | bash
-        ;;
-    Darwin)
-        brew update
-        brew install pyenv
-        ;;
-    *)
-        echo '暂时不支持该系统'
-        ;;
-esac
+pyver=$1
+
+install_pyenv(){
+    path=`command -v pyenv`
+    if [ $path ];then
+        echo -e "pyenv is install on $path"
+        exit
+    fi
+
+    case $SYS in
+        debian|ubuntu|devuan|deepin)
+            sudo apt update -y
+            sudo apt -y install git gcc make patch zlib1g.dev libgdbm-dev libssl-dev libsqlite3-dev libbz2-dev libreadline-dev
+            curl -L https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer | bash
+            ;;
+        centos|fedora|rhel|amzn)
+            sudo yum update -y
+            sudo yum -y install git gcc readline readline-devel readline-static openssl openssl-devel openssl-static sqlite-devel bzip2-devel bzip2-libs
+            curl -L https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer | bash
+            ;;
+        Darwin)
+            brew update
+            brew install pyenv
+            ;;
+        *)
+            echo '暂时不支持该系统'
+            ;;
+    esac
+}
 
 # BP=~/.bash_profile
 # if [ -f ~/.profile ];then
@@ -42,3 +52,14 @@ esac
     # # nohup pyenv install 2.7.12 &
     # # nohup pyenv install 3.6.0 &
 # fi
+
+if [ ! ${pyver} ]
+then
+    install_pyenv
+else
+    # url=https://www.python.org/ftp/python/${pyver}/Python-${pyver}.tar.xz
+    url=https://github.com/wxnacy/file/releases/download/python/Python-${pyver}.tar.xz
+    wget ${url} -P ~/.pyenv/cache/
+    pyenv install ${pyver}
+    # wget http://mirrors.sohu.com/python/${python_version}/Python-${python_version}.tar.xz \
+fi

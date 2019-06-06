@@ -40,3 +40,6 @@ alias vgd="vagrant destroy -f"
 # autossh
 alias assh="autossh -M 0 "
 
+# python
+alias pipi="pip install -i https://pypi.tuna.tsinghua.edu.cn/simple"
+alias pydb="python -m pdb"

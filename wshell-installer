@@ -30,7 +30,7 @@ if [[ ! $PATH =~ '.wshell/bin' ]];then
     echo \' '>> ~/.bashrc'
 
     echo -n -e "\t"echo \'
-    echo -n '. ${WS_HOME}/conf/system/bashrc'
+    echo -n '. ${WS_HOME}/conf/bash/bashrc'
     echo \' '>> ~/.bashrc'
 
     echo -e "\tsource ~/.bashrc"
