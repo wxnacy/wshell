@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+curl -sIL -w "@${WS_HOME}/bin/http/time_format" -o /dev/null $1
+

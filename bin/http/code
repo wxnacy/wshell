@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+echo $(curl -sIL -w "%{http_code}" -o /dev/null $1)

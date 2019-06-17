@@ -17,6 +17,9 @@ source $ZSH/oh-my-zsh.sh
 # unsetopt xtrace
 # exec 2>&3 3>&-
 
+if [ -f ~/.bash_profile ]; then
+    source ~/.bash_profile
+fi
 if [ -f ~/.bashrc ]; then
     source ~/.bashrc
 fi
