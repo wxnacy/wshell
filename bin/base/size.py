@@ -36,24 +36,20 @@ def get_size1(path):
 
 def format_size(size: int):
     '''格式化大小'''
-
     unit = {
         0: 'B',
         1: 'K',
         2: 'M',
-        3: 'T',
-        4: 'P',
+        3: 'G',
+        4: 'T',
     }
 
-    for i in range(1, 6):
-        max_size = 1024 ** i
-        if size < max_size:
-            j = i - 1
-            if j < 1:
-                res = size
-            else:
-                res = size / 1028 * j
-            return '{:0.1f}{}'.format( res, unit[j])
+    for i in range(6):
+        if 1024 ** i <= size < 1024 ** ( i + 1 ):
+            if i > 0:
+                size = size / 1024 ** i
+            return '{:0.1f}{}'.format( size, unit[i])
+    return '{}B'.format(size)
 
 class File():
     def __init__(self, path, *args, **kwargs):

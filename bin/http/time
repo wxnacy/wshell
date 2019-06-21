@@ -1,4 +1,22 @@
 #!/usr/bin/env bash
 
 curl -sIL -w "@${WS_HOME}/bin/http/time_format" -o /dev/null $1
+echo ''
+ws http time.py $1
+# time=$(curl -sIL -w "%{time_namelookup} %{time_connect} %{time_appconnect} \
+# %{time_redirect} %{time_pretransfer} %{time_starttransfer} %{time_total}" -o /dev/null $1)
+
+# echo $time
+# all=($time)
+# echo ${all[@]}
+# dns=${all[0]}
+# conn=${all[1]}
+# echo $dns 
+# echo $((conn - dns))
+
+# out="""
+# DNS: ${dns}
+# TCP: $((conn - dns))
+# """
+# echo $out
 

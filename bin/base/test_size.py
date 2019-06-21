@@ -32,8 +32,11 @@ class TestMain(unittest.TestCase):
         self.assertEqual
 
     def test_format_size(self):
+        self.assertEqual(format_size(0), '0B')
         self.assertEqual(format_size(234), '234.0B')
         self.assertEqual(format_size(1234), '1.2K')
+        self.assertEqual(format_size(1111111), '1.1M')
+        self.assertEqual(format_size(11111111111), '10.3G')
 
 def speed(count, func, *args):
     b = timeit.default_timer()

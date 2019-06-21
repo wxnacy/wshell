@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# Author: wxnacy(wxnacy@gmail.com)
+# Description: 推送书籍到 kindle
+# vim ${HOME}/.config/wshell/kindle
+# email=your_kindle@kindle.cn
+
+. ${HOME}/.config/wshell/kindle
+
+path=$1
+
+if [ ! -f $path ]
+then
+  echo "Can not find the file '$path'"
+  exit 0
+fi
+
+mutt $email -a $path < /dev/null
+echo 'Success!'
+
