@@ -26,3 +26,4 @@ function proxyon() {
 if [ -f ~/.bash_aliases ]; then
     source ~/.bash_aliases
 fi
+source ${WS_HOME}/conf/bash/bash_aliases
