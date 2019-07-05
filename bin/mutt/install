@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+# Author: wxnacy(wxnacy@gmail.com)
+# Description:
+
+
+OS=`ws os`
+OSS=(${OS})
+SYS=${OSS[0]}
+VER=${OSS[1]}
+PKG=${OSS[2]}
+
+case $SYS in
+    debian|ubuntu|devuan|deepin)
+        sudo apt update -y
+        sudo apt install mutt -y
+        ;;
+    centos|fedora|rhel|amzn)
+        sudo yum update -y
+        sudo yum install mutt -y
+        ;;
+    Darwin)
+        brew install mutt
+        ;;
+    *)
+        echo '暂时不支持该系统'
+        ;;
+esac
+
+

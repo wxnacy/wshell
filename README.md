@@ -200,10 +200,21 @@ $ ws datetime   # 获取当前日期和时间
 
 如果你本地配置了 mutt 邮件发送，然后安装如下方式配置好你的 Kindle 邮箱即可推送
 
+**配置 kindle 接收邮箱**
+
 ```bash
-# 配置邮箱
-$ echo "email=your_kindle@kindle.cn" > ~/.config/wshell/kindle
+$ echo "email=your_kindle@kindle.cn" > ~/.config/wshell/kindle/kindrc
 ```
+
+**配置 mutt 推送邮箱配置**
+
+```bash
+set smtp_url = "smtp://<your_send_email>@<smtp_url>:<smtp_port>"
+set smtp_pass = "<your_send_email_password>"
+set from = "<your_send_email>"
+```
+
+**推送**
 
 ```bash
 $ ws kindle push <bookfile>     # 推送

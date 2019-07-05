@@ -48,6 +48,8 @@ if __name__ == "__main__":
                     print(line)
 
     filelists.sort(key=lambda x: x['size'], reverse=True)
+    if len(filelists) <= 10:
+        sys.exit(0)
     print('\n排序后，最大的 10 个文件')
 
     for f in filelists[:10]:

@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+# Author: wxnacy(wxnacy@gmail.com)
+# Description: 将书发布到 https://github.com/wxnacy/book
+
+filepath=$1
+
+publish(){
+    book_dir=$1
+    goss -r book -p book/${book_dir}/ $2
+}
+
+if [ -f $filepath ]
+then
+    names=($(ws py parse_filename.py $filepath))
+    book_dir=${names[2]}
+    publish $book_dir $filepath
+else
+    filepath=$(python -c "print('${filepath}'.rstrip('/'))")
+    book_dir=$(python -c "print('${filepath}'.split('/')[-1])")
+
+    for f in `ls $filepath`
+    do
+        fp=$filepath/$f
+        echo $fp
+        publish $book_dir $fp
+    done
+
+fi
+

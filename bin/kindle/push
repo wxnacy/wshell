@@ -1,10 +1,14 @@
 #!/usr/bin/env bash
 # Author: wxnacy(wxnacy@gmail.com)
 # Description: 推送书籍到 kindle
-# vim ${HOME}/.config/wshell/kindle
+# vim ${HOME}/.config/wshell/kindle/kindrc
 # email=your_kindle@kindle.cn
+# vim ${HOME}/.config/wshell/kindle/muttrc
+# set smtp_url = "smtp://<your_email>@<smtp_url>:<smtp_port>"
+# set smtp_pass = "<email_password>"
+# set from = "<your_email>"
 
-. ${HOME}/.config/wshell/kindle
+. ${HOME}/.config/wshell/kindle/kindrc
 
 path=$1
 
@@ -14,6 +18,7 @@ then
   exit 0
 fi
 
-mutt $email -a $path < /dev/null
+echo "Begin push $path"
+mutt $email -F ${HOME}/.config/wshell/kindle/muttrc -s $path -a $path < /dev/null
 echo 'Success!'
 
