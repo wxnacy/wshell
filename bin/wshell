@@ -37,23 +37,23 @@ help(){
 }
 
 other(){
+    args=($@)
     ws_home=$(ws home)
     SH=${ws_home}/bin/$1/$2
     if [ -f $SH ];then
-        $SH $3 $4 $5 $6
+        $SH ${args[@]:2}
         exit
     fi
 
     SH=${ws_home}/bin/$2/$1
     if [ -f $SH ];then
-        $SH $3 $4 $5 $6
+        $SH ${args[@]:2}
         exit
     fi
 
-    # SH=${0/%wshell/base\/$1}
     SH=${ws_home}/bin/base/$1
     if [ -f $SH ];then
-        $SH $2 $3 $4 $5 $6
+        $SH ${args[@]:1}
         exit
     fi
 
@@ -61,7 +61,6 @@ other(){
 }
 
 home() {
-    # echo ${WS_HOME}
     [ -z ${WS_HOME} ] && echo "$HOME/.wshell" || echo ${WS_HOME}
 }
 
@@ -91,7 +90,7 @@ case "$1" in
     sha256)  hash $1 $2;;
     sha512)  hash $1 $2;;
     home)  home;;
-    *)       other $1 $2 $3 $4 $5 $6 $7;;
+    *)       other $@;;
 esac
 
 

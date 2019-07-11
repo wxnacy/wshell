@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
 # Author: wxnacy(wxnacy@gmail.com)
 # Description: 推送书籍到 kindle
-# vim ${HOME}/.config/wshell/kindle/kindrc
-# email=your_kindle@kindle.cn
-# vim ${HOME}/.config/wshell/kindle/muttrc
-# set smtp_url = "smtp://<your_email>@<smtp_url>:<smtp_port>"
-# set smtp_pass = "<email_password>"
-# set from = "<your_email>"
+# ws config set kindle.email <your_email>
+# ws config set email.smtp_url smtp://<your_email>@<smtp_url>:<smtp_port>
+# ws config set email.smtp_pass <email_password>
+# ws config set email.from <your_email>
 
 . ${HOME}/.config/wshell/kindle/kindrc
+email=$(ws config get kindle.email)
+# echo $email
 
 path=$1
 
@@ -19,6 +19,10 @@ then
 fi
 
 echo "Begin push $path"
-mutt $email -F ${HOME}/.config/wshell/kindle/muttrc -s $path -a $path < /dev/null
+names=($(ws py parse_filename.py $path))
+name=${names[1]}
+mutt $email -F ${HOME}/.config/wshell/kindle/muttrc -s $name -a $path < /dev/null
+# echo $name
+# ws email send $email -s $name -a $path
 echo 'Success!'
 

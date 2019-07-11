@@ -10,7 +10,8 @@ notinstall=''
 echo -e '\nInstall:'
 
 for i in  gcc g++ make cmake git vim wget unzip expect openssl c++ ack \
-    htop http dig pyenv python java mysql docker nginx openresty vagrant;do
+    htop http dig pyenv python java mysql docker nginx openresty vagrant \
+    redis;do
     path=`command -v $i`
     if [ $path ];then
         echo -e "$i\tinstall on $path"

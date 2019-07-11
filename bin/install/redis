@@ -9,17 +9,17 @@ if [ ${SYS} == 'ubuntu' ]
 then
 
     sudo apt update -y
-    sudo apt -y install htop
+    sudo apt -y install redis
 
 elif [ ${SYS} == 'centos' ]
 then
 
-    sudo yum -y install epel-release
-    sudo yum -y install htop
+    sudo yum update -y
+    sudo yum -y install redis
 
 elif [ ${SYS} == 'Darwin' ]
 then
 
-    brew install htop
+    brew install redis
 
 fi
