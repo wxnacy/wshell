@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# Author: wxnacy(wxnacy@gmail.com)
+# Description: 获取分支名称
+
+branch_name=$(ws git branch)
+git pull origin $branch_name

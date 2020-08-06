@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# Author: wxnacy(wxnacy@gmail.com)
+# Description: 获取分支名称
+
+branch_name=`git branch | grep '*' | awk '{print $2}'`
+echo $branch_name

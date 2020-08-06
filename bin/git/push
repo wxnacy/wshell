@@ -4,7 +4,9 @@
 # __copyright__ = "Copyright of GoChinaTV (2017)."
 
 MSG=$@
-branch=`git branch | grep '*' | awk '{print $2}'`
-git pull origin $branch
-git add . && git commit -m "${MSG}"
+branch=$(ws git branch)
+
+ws git commit ${MSG}
+ws git pull
+ws git commit ${MSG}
 git push origin $branch
