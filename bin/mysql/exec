@@ -1,11 +1,14 @@
 #!/usr/bin/env expect
 
 set conf_name [lindex $argv 0]
+set sql [lindex $argv 1]
+puts  $argv
 set conf_dir $env(HOME)/.config/wshell/mysql
 
 if { $conf_name == "" } {
     set conf_name "local"
 }
+
 set conf $conf_dir/$conf_name
 
 if { [file exists $conf] == 0 } {
@@ -20,11 +23,11 @@ if { [file exists $conf] == 0 } {
 source $conf
 source $env(WS_HOME)/bin/mysql/conf.exp
 
-spawn sh -c "mysql -u${user} -p -h ${host} -P ${port} ${log}"
+spawn sh -c "mysql -u${user} -p -h ${host} -P ${port} ${log} -e \"${sql}\""
 expect "*assword:*"
 send "${password}\r"
-if { [info exists db] } {
-    send "use ${db};\r"
-}
+# if { [info exists db] } {
+    # send "use ${db};\r"
+# }
 # send "exit;\r"
 interact

@@ -1,5 +1,6 @@
 # echo '.zprofile' >> /tmp/zshmsg
 # echo '.zprofile'
+echo 'source ~/.zprofile'
 
 if [ -d "${HOME}/.pyenv" ]; then
     # https://github.com/pyenv/pyenv#basic-github-checkout

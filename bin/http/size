@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+h=$1
+url=$2
+if [[ $h != '-h' ]]
+then
+    url=$1
+    arr=($(curl -sIL $url | grep Content-Len))
+    size=${arr[1]}
+    echo $size
+else
+    arr=($(curl -sIL $url | grep Content-Len))
+    size=${arr[1]}
+    ws py utils.py format_size $size
+fi
+

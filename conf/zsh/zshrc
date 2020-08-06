@@ -1,3 +1,4 @@
+echo 'source ~/.zshrc'
 # echo $0 >> /tmp/zshmsg
 # echo '.zshrc'
 # PS4=$'\\\011%D{%s%6.}\011%x\011%I\011%N\011%e\011'
@@ -25,4 +26,17 @@ if [ -f ~/.bashrc ]; then
 fi
 # autoload -U promptinit; promptinit
 
+# autosuggestions
+if [ -f /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]; then
+    source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+fi
+
+if [ -f ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
+    source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+fi
+
 # prompt spaceship
+colorls_sh=$(dirname $(gem which colorls))/tab_complete.sh
+if [ -f $colorls_sh ]; then
+    source $colorls_sh
+fi

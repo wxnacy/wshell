@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+source=$1
+target=$2
+
+# is_m3u8=$(python -c "print('${source}'.endswith('${target}'))")
+# echo $is_m3u8
+
+is_m3u8=`echo $source | grep ".*m3u8$"`
+if [[ "$is_m3u8" != "" ]]
+then
+    echo 'm3u8 => mp4'
+    ffmpeg -i "${source}" -bsf:a aac_adtstoasc -vcodec copy -c copy -crf 50 $target
+else
+    echo "不适配"
+fi
+

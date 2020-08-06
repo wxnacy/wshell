@@ -16,12 +16,14 @@ then
     publish $book_dir $filepath
 else
     filepath=$(python -c "print('${filepath}'.rstrip('/'))")
-    book_dir=$(python -c "print('${filepath}'.split('/')[-1])")
+    # book_dir=$(python -c "print('${filepath}'.split('/')[-1])")
+    book_dir=$filepath
 
     for f in `ls $filepath`
     do
         fp=$filepath/$f
         echo $fp
+        # echo $book_dir
         publish $book_dir $fp
     done
 

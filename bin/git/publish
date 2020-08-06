@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# Author: wxnacy(wxnacy@gmail.com)
+# Description: 在 git 仓库目录中发布版本
+
+MSG=$@
+TAG=v$(date '+%Y.%m.%d')
+
+ws git push ${MSG}
+git tag ${TAG}
+git push origin ${TAG}

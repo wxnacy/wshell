@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+# adb connect 192.168.0.102:5555
+adb shell am startservice ca.zgrs.clipper/.ClipboardService
+adb shell am broadcast -a clipper.set -e text "$1"
+
