@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+export PYTHONPATH=./
+
+python wshell/cli/main.py $@
